@@ -1,0 +1,153 @@
+[
+  {
+    "category": "常用网站",
+    "items": [
+      { "name": "immortalWrt", "url": "http://10.10.10.1", "desc": "" },
+      { "name": "zashBoard", "url": "http://10.10.10.4:20580", "desc": "" },
+      { "name": "fnOS", "url": "http://10.10.10.4", "desc": "" },
+      { "name": "openSpeedtest", "url": "http://10.10.10.4:8080", "desc": "" },
+      { "name": "gemini", "url": "https://gemini.google.com", "desc": "" },
+      { "name": "chatGPT", "url": "https://chatgpt.com", "desc": "" },
+      { "name": "千问", "url": "https://www.tongyi.com", "desc": "" },
+      { "name": "豆包", "url": "https://www.doubao.com", "desc": "" },
+      { "name": "V2ex", "url": "https://www.v2ex.com/?tab=hot", "desc": "" },
+      { "name": "Linux.do", "url": "https://linux.do", "desc": "" },
+      { "name": "chiphell", "url": "https://www.chiphell.com/forum-146-1.html", "desc": "" },
+      { "name": "Hacker News Top", "url": "https://news.ycombinator.com", "desc": "" },
+      { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
+      { "name": "Youtube", "url": "https://www.youtube.com", "desc": "" },
+      { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
+      { "name": "Oracle", "url": "https://www.oracle.com/cn/cloud/free", "desc": "" }
+    ]
+  },
+  {
+    "category": "Web",
+    "items": [
+      { "name": "墨鱼去广告", "url": "https://github.com/ddgksf2013", "desc": "" },
+      { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
+      { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
+      { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
+      { "name": "fre321", "url": "https://www.fre321.com", "desc": "网站聚合" },
+      { "name": "工具箱", "url": "https://666666.dev/", "desc": "网站聚合" },
+      { "name": "不死鸟", "url": "https://iui.su/", "desc": "资源" },
+      { "name": "有用经验", "url": "https://yyjingyan.com/", "desc": "经验分享网站" },
+      { "name": "Apple参数", "url": "https://hubweb.cn/", "desc": "Apple 苹果产品参数中心" },
+      { "name": "哲风壁纸", "url": "https://haowallpaper.com", "desc": "" },
+      { "name": "电鸭社区", "url": "https://eleduck.com", "desc": "专注远程工作招聘交流平台" },
+      { "name": "轻松游牧", "url": "https://easynomad.cn", "desc": "远程工作集合" },
+      { "name": "flight adsb", "url": "https://flightadsb.variflight.com", "desc": "航班实况图" },
+      { "name": "全历史", "url": "https://www.allhistory.com", "desc": "" },
+      { "name": "自由钢琴", "url": "https://www.autopiano.cn", "desc": "" },
+      { "name": "旧金山直播", "url": "https://fogcam.org", "desc": "长达几十年" },
+      { "name": "MacRumors", "url": "https://buyersguide.macrumors.com", "desc": "Apple购买建议" },
+      { "name": "樱花猫", "url": "https://dokidokiweb.com", "desc": "防失联地址" },
+      { "name": "NealFun", "url": "https://neal.fun", "desc": "摸鱼小游戏合集" },
+      { "name": "气温", "url": "https://climatereanalyzer.org/clim/t2_daily/?dm_id=world", "desc": "全球每年平均温度折线图" },
+      { "name": "小霸王", "url": "https://www.yikm.net", "desc": "FC游戏" }
+    ]
+  },
+  {
+    "category": "Tools",
+    "items": [
+      { "name": "超分辨率", "url": "https://cappuccino.moe/", "desc": "马赛克清晰术" },
+      { "name": "文件快递柜", "url": "https://share.lanol.cn/", "desc": "无需登录文件分享" },
+      { "name": "中转站", "url": "https://paste.c-net.org/", "desc": "使用链接可重置180天期限" },
+      { "name": "fastdownload", "url": "https://www.fastdownload.io/", "desc": "一个下载各种流媒体视频的在线工具，支持 Youtube 和 TikTok" },
+      { "name": "icraft", "url": "https://icraft.gantcloud.com/editor", "desc": "3D架构图设计" },
+      { "name": "tunemymusic", "url": "https://www.tunemymusic.com/zh-CN", "desc": "各音乐平台歌单互转" },
+      { "name": "Logi Web Connect", "url": "https://logiwebconnect.com", "desc": "罗技网页连接设备" },
+      { "name": "webSpy", "url": "https://webspy.site", "desc": "网站流量分析" },
+      { "name": "VPS脚本", "url": "https://likeable-fuschia-f06.notion.site/VPS-76f1905f566942dabfa7f95317a0d2ca", "desc": "VPS一键脚本合集(持更~)" },
+      { "name": "sms", "url": "https://www.zusms.com", "desc": "免费短信接收平台" },
+      { "name": "jetbra", "url": "https://3.jetbra.in", "desc": "jetbrains (idea等工具) 破解信息" },
+      { "name": "SMS", "url": "https://sms-activate.guru/cn", "desc": "在线收费短信接码平台" },
+      { "name": "TypeLit", "url": "https://www.typelit.io", "desc": "英语原著结合打字练习" },
+      { "name": "Screen Recorder", "url": "https://screenrecord.43z.one", "desc": "录制浏览器页面" },
+      { "name": "AppStore图标", "url": "https://icon.yukonga.top", "desc": "" },
+      { "name": "Z2H字帖", "url": "https://paper.z2h.cn", "desc": "" },
+      { "name": "毒蘑菇GPU测试", "url": "https://volumeshader.org/zh", "desc": "网络、屏幕、声音、摄像头、鼠标和键盘等测试" },
+      { "name": "DebianClub", "url": "https://www.debian.club/", "desc": "debian非官方wiki" },
+      { "name": "archLinux", "url": "https://github.com/shorinkiwata/archlinux-gnome-btrfs-full-installation-guide", "desc": "GitHub教程" }
+    ]
+  },
+  {
+    "category": "Code",
+    "items": [
+      { "name": "codepen", "url": "https://codepen.io/pen", "desc": "前端代码运行展示" },
+      { "name": "json4u", "url": "https://json4u.cn/editor", "desc": "Json可视化工具" },
+      { "name": "canvas-confetti", "url": "https://www.kirilv.com/canvas-confetti/", "desc": "在网页上抛洒五彩纸屑的 JS 库" },
+      { "name": "X File Storage", "url": "https://x-file-storage.xuyanwu.cn/", "desc": "一个 Java 软件包，用于文件上传" },
+      { "name": "programming-book", "url": "https://ebookfoundation.github.io/free-programming-books/books/free-programming-books-zh.html", "desc": "程序代码知识大全" },
+      { "name": "算法", "url": "https://www.hello-algo.com", "desc": "算法系统学习教程" },
+      { "name": "Java设计模式", "url": "https://java-design-patterns.com/zh/", "desc": "编程原则还有代码片段" },
+      { "name": "计算机专业学习路线", "url": "https://hackway.org/", "desc": "包含Java、c++、前端和运维专业知识" },
+      { "name": "海外兔", "url": "https://osjobs.net", "desc": "面试经验" },
+      { "name": "MDN", "url": "https://developer.mozilla.org/zh-CN/docs/Learn_web_development", "desc": "前端文档教程" },
+      { "name": "书栈网", "url": "https://www.bookstack.cn", "desc": "程序员知识杂库" },
+      { "name": "101 Linux", "url": "https://101.lug.ustc.edu.cn", "desc": "Linux知识大全" },
+      { "name": "CS自学指南", "url": "https://csdiy.wiki", "desc": "系统学习计算机" }
+    ]
+  },
+  {
+    "category": "软件资源",
+    "items": [
+      { "name": "MacWK", "url": "https://macwk.com", "desc": "macAPP分享" },
+      { "name": "423Down", "url": "https://www.423down.com", "desc": "Windows软件资源" },
+      { "name": "Gamer520", "url": "https://www.gamer520.com", "desc": "Windows，switch等学习软件" },
+      { "name": "Koyso", "url": "https://koyso.com", "desc": "Windows游戏学习软件" },
+      { "name": "FDM", "url": "https://www.freedownloadmanager.org/zh/", "desc": "IDM免费版平替" },
+      { "name": "Wo Mic", "url": "https://wolicheng.com/womic/download.html", "desc": "麦克风串流软件（电脑用手机麦克）" },
+      { "name": "MAS", "url": "https://massgrave.dev", "desc": "Windows激活" },
+      { "name": "小众软件", "url": "https://appinn.com", "desc": "软件信息收集站" },
+      { "name": "v2rayNG", "url": "https://github.com/2dust/v2rayNG/releases", "desc": "安卓代理工具" },
+      { "name": "afterburner", "url": "https://www.msi.com/Landing/afterburner/graphics-cards", "desc": "微星小飞机" },
+      { "name": "DirectX", "url": "https://blog.csdn.net/vbcom/article/details/7245186", "desc": "DirectX修复工具" },
+      { "name": "RouterOS", "url": "https://mikrotik.ltd", "desc": "MikroTik RouterOS Patched" },
+      { "name": "Gamer520", "url": "https://sway.cloud.microsoft/ZyHdQKVF0lCLyEuA", "desc": "防失联地址" },
+      { "name": "不忘初心系统", "url": "https://www.123pan.com/s/7geA-fW3Hd", "desc": "" },
+      { "name": "123云盘解锁", "url": "https://github.com/QingJ01/123pan_unlock", "desc": "" },
+      { "name": "sysin", "url": "https://sysin.cn/", "desc": "Mac OS系统相关，如下载重装等..." }
+    ]
+  },
+  {
+    "category": "网络工具",
+    "items": [
+      { "name": "证书", "url": "https://crt.sh/", "desc": "证书信息查询" },
+      { "name": "DNS", "url": "https://dns.surf", "desc": "DNS查询-全球地图可视化" },
+      { "name": "kkTerminal", "url": "https://ssh.kkbpro.com", "desc": "网页版SSH工具" },
+      { "name": "SKK-IP", "url": "https://ip.skk.moe", "desc": "skk的ip详细信息" },
+      { "name": "IPCheck", "url": "https://ipcheck.ing", "desc": "ip详细信息" },
+      { "name": "Ping0", "url": "https://ping0.cc", "desc": "家宽纯净度参考" },
+      { "name": "网络面板", "url": "https://net.netart.cn", "desc": "持续流量测速" },
+      { "name": "IPData", "url": "https://ipdata.co", "desc": "IP分数相关" },
+      { "name": "端口扫描", "url": "https://mtool.chinaz.com/port", "desc": "检测端口防火墙是否打开" },
+      { "name": "代理检测", "url": "https://proxy.incolumitas.com/proxy_detect.html", "desc": "识别代理/VPN检测主要手段" },
+      { "name": "tcpMK", "url": "https://tcp.mk", "desc": "高效的网络工具箱，旨在帮助运维和开发提高效率" },
+      { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
+      { "name": "speed test", "url": "https://speed.cloudflare.com", "desc": "cloudflare测速网站" },
+      { "name": "TCP调参", "url": "https://omnitt.com", "desc": "计算sysctl.conf" },
+      { "name": "sing-box配置", "url": "https://github.com/xishang0128/sub-store-template", "desc": "" }
+    ]
+  },
+  {
+    "category": "Blog",
+    "items": [
+      { "name": "tw93", "url": "https://tw93.fun", "desc": "潮流周刊作者" },
+      { "name": "yyhhyy", "url": "https://iyyh.net/", "desc": "mihomo配置&WireGuard回家" },
+      { "name": "从01开始", "url": "https://www.peterjxl.com/", "desc": "博客写得很好" },
+      { "name": "wfso", "url": "https://blog.wfso.cn/archives/115/", "desc": "Windows 实用软件推荐（持续更新）" },
+      { "name": "dolingou", "url": "https://deeprouter.org", "desc": "家庭网络折腾" },
+      { "name": "skk-blog", "url": "https://blog.skk.moe", "desc": "代理工具使用教程" },
+      { "name": "大橘和朋友们的周刊", "url": "http://rrorangeandfriends.de", "desc": "质量不错的周刊，很多实用的工具推荐。" },
+      { "name": "阮一峰", "url": "https://www.ruanyifeng.com/blog", "desc": "" },
+      { "name": "hanwckf", "url": "https://cmi.hanwckf.top", "desc": "immortalwrt-mt798x作者" },
+      { "name": "静轩之别苑", "url": "https://quickapp.lovejade.cn", "desc": "作有《纳瓦尔宝典》读书笔记" },
+      { "name": "瓦解的生活记事", "url": "https://hin.cool", "desc": "天钡r1评测关注" },
+      { "name": "回声", "url": "https://iecho.cc", "desc": "PT，家庭网络，esim等blog" },
+      { "name": "狐狸老师", "url": "https://gitee.com/callmer", "desc": "pve、ros等工具使用教程" },
+      { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
+      { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
+      { "name": "becomesovran", "url": "https://becomesovran.com/blog/server-setup-basics.html", "desc": "linux服务器初始化" }
+    ]
+  }
+]

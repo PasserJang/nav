@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人导航</title>
+    <style>
+        /* === 全局变量 === */
+        :root {
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --primary-color: #b0b5b6;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --input-bg: #ffffff;
+            --input-border: #dddddd;
+            --shadow: 0 2px 4px rgba(0,0,0,0.05);
+            --hover-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            
+            /* 图标相关设置 */
+            --icon-size: 16px; /* 正常的 Favicon 大小 */
+            --icon-gap: 16px;
+        }
+
+        /* === Dark Mode === */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --card-bg: #2d2d2d;
+                --primary-color: #030303;
+                --text-main: #e0e0e0;
+                --text-sub: #a0a0a0;
+                --input-bg: #2d2d2d;
+                --input-border: #444444;
+                --shadow: 0 2px 4px rgba(0,0,0,0.3);
+                --hover-shadow: 0 6px 12px rgba(0,0,0,0.5);
+            }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+
+        /* === 搜索栏 === */
+        .search-container {
+            max-width: 800px;
+            margin: 30px auto 40px;
+            display: flex;
+            gap: 10px;
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            background: var(--bg-color);
+            padding: 10px;
+            border-radius: var(--radius);
+            /* 简单的毛玻璃背景适配 */
+            backdrop-filter: blur(10px); 
+            box-shadow: var(--shadow);
+            border: 1px solid transparent;
+        }
+
+        .search-engine-select {
+            padding: 0 15px;
+            height: 45px;
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius);
+            background: var(--input-bg);
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .search-input {
+            flex: 1;
+            height: 45px;
+            padding: 0 20px;
+            border: 1px solid var(--input-border);
+            border-radius: var(--radius);
+            background: var(--input-bg);
+            color: var(--text-main);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-input:focus { border-color: var(--primary-color); }
+
+        .search-btn {
+            height: 45px;
+            padding: 0 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* === 导航区域 === */
+        .main-container { max-width: 1000px; margin: 0 auto; padding-bottom: 50px; }
+
+        .category-section { margin-bottom: 30px; }
+
+        .category-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary-color);
+            color: var(--text-main);
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        /* === 卡片样式 === */
+        .link-card {
+            background: var(--card-bg);
+            padding: 12px 15px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            gap: var(--icon-gap);
+            border: 1px solid transparent;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .link-card { border: 1px solid #3d3d3d; }
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--primary-color);
+        }
+
+        /* === JS动态插入的图标样式 === */
+        .link-icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+            border-radius: 4px; /* 轻微圆角，类似APP图标 */
+            flex-shrink: 0;
+            object-fit: contain; 
+        }
+
+        .link-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .link-name {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            line-height: 1.2;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link-desc {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        /* === 辅助类 === */
+        .hidden { display: none !important; }
+        #loading { text-align: center; margin-top: 50px; color: var(--text-sub); }
+
+        @media (max-width: 600px) {
+            .search-container { flex-direction: column; }
+            .link-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <select id="engine-select" class="search-engine-select">
+            <option value="google">Google</option>
+            <option value="bing">Bing</option>
+            <option value="baidu">Baidu</option>
+        </select>
+        <input type="text" id="search-input" class="search-input" placeholder="搜索链接或网络...">
+        <button id="search-btn" class="search-btn">搜索</button>
+    </div>
+
+    <div id="loading">正在加载配置...<br><small>(请确保使用本地服务器运行)</small></div>
+    <div id="nav-container" class="main-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('nav-container');
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const engineSelect = document.getElementById('engine-select');
+            const loading = document.getElementById('loading');
+
+            // 1. 读取数据
+            fetch('data.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.json();
+                })
+                .then(data => {
+                    renderNav(data);
+                    loading.style.display = 'none';
+                    // 渲染完成后，调用你的图标加载函数
+                    addFavicons();
+                })
+                .catch(error => {
+                    loading.innerHTML = `<span style="color:red;">加载失败: ${error.message}</span>`;
+                });
+
+            // 2. 渲染 HTML 结构
+            function renderNav(data) {
+                container.innerHTML = '';
+                
+                data.forEach((category, index) => {
+                    const section = document.createElement('div');
+                    section.className = 'category-section';
+                    
+                    const title = document.createElement('h2');
+                    title.className = 'category-title';
+                    title.textContent = category.category;
+                    section.appendChild(title);
+
+                    const grid = document.createElement('div');
+                    grid.className = 'link-grid';
+
+                    category.items.forEach(item => {
+                        const a = document.createElement('a');
+                        a.href = item.url;
+                        // 注意：这里添加了 nav-link 类，以便你的函数能通过 querySelectorAll 找到它
+                        a.className = 'link-card nav-link'; 
+                        a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
+                        a.dataset.search = (item.name + item.desc).toLowerCase();
+
+                        // 初始不插入 img，由 addFavicons 函数后续插入
+                        a.innerHTML = `
+                            <div class="link-content">
+                                <div class="link-name">${item.name}</div>
+                                <div class="link-desc">${item.desc || ''}</div>
+                            </div>
+                        `;
+                        grid.appendChild(a);
+                    });
+
+                    section.appendChild(grid);
+                    container.appendChild(section);
+                });
+            }
+
+            // 3. 图标加载逻辑 (整合了你的代码)
+            function addFavicons() {
+                const links = document.querySelectorAll(".nav-link");
+                const REQUEST_TIMEOUT_MS = 3000;
+                const COLORS = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
+
+                links.forEach((link) => {
+                    try {
+                        const url = new URL(link.href);
+                        const favicon = document.createElement("img");
+                        
+                        // === 关键修改：添加 CSS 类名以便控制大小 ===
+                        favicon.className = 'link-icon'; 
+                        
+                        let currentTimer; 
+
+                        // Step 3: SVG 默认图标
+                        const setDefaultIcon = () => {
+                            clearTimeout(currentTimer); 
+                            favicon.onload = null; 
+                            favicon.onerror = null;
+
+                            const linkText = link.querySelector('.link-name').textContent.trim(); // 获取链接文字
+                            const initial = (linkText ? linkText[0] : url.hostname[0]).toUpperCase();
+
+                            let hash = 0;
+                            for (let i = 0; i < url.hostname.length; i++) {
+                                hash = url.hostname.charCodeAt(i) + ((hash << 5) - hash);
+                            }
+                            const colorIndex = Math.abs(hash % COLORS.length);
+                            const bgColor = COLORS[colorIndex];
+
+                            const svg = `
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                                    <rect width="100" height="100" fill="${bgColor}"/>
+                                    <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" 
+                                          font-size="55" fill="white" font-family="sans-serif" font-weight="bold">
+                                        ${initial}
+                                    </text>
+                                </svg>
+                            `;
+                            favicon.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+                        };
+
+                        // Step 2: Direct /favicon.ico
+                        const tryDirectFavicon = () => {
+                            clearTimeout(currentTimer); 
+                            currentTimer = setTimeout(() => {
+                                setDefaultIcon(); 
+                            }, REQUEST_TIMEOUT_MS);
+
+                            favicon.onload = () => { clearTimeout(currentTimer); };
+                            favicon.onerror = () => {
+                                clearTimeout(currentTimer); 
+                                setDefaultIcon(); 
+                            };
+                            favicon.src = `https://${url.hostname}/favicon.ico`;
+                        };
+
+                        // Step 1: Yandex API
+                        const tryYandex = () => {
+                            currentTimer = setTimeout(() => {
+                                tryDirectFavicon(); 
+                            }, REQUEST_TIMEOUT_MS);
+
+                            favicon.onload = () => {
+                                clearTimeout(currentTimer); 
+                                if (favicon.naturalWidth === 1 && favicon.naturalHeight === 1) {
+                                    tryDirectFavicon(); 
+                                }
+                            };
+                            favicon.onerror = () => {
+                                clearTimeout(currentTimer); 
+                                tryDirectFavicon(); 
+                            };
+                            favicon.src = `https://favicon.yandex.net/favicon/${url.hostname}`;
+                        };
+
+                        // 插入图标到最前面
+                        link.insertBefore(favicon, link.firstChild);
+                        tryYandex();
+                    } catch (e) {
+                        console.error("Error processing favicon:", e);
+                    }
+                });
+            }
+
+            // 4. 搜索功能
+            searchInput.addEventListener('input', (e) => {
+                const keyword = e.target.value.toLowerCase().trim();
+                document.querySelectorAll('.category-section').forEach(section => {
+                    const cards = section.querySelectorAll('.link-card');
+                    let hasVisible = false;
+                    cards.forEach(card => {
+                        if (card.dataset.search.includes(keyword)) {
+                            card.classList.remove('hidden');
+                            hasVisible = true;
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                    hasVisible ? section.classList.remove('hidden') : section.classList.add('hidden');
+                });
+            });
+
+            function performSearch() {
+                const query = searchInput.value.trim();
+                if (!query) return;
+                const engine = engineSelect.value;
+                let url = '';
+                if (engine === 'google') url = `https://www.google.com/search?q=${query}`;
+                else if (engine === 'bing') url = `https://www.bing.com/search?q=${query}`;
+                else url = `https://www.baidu.com/s?wd=${query}`;
+                window.open(url, '_blank');
+            }
+
+            searchInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') performSearch(); });
+            searchBtn.addEventListener('click', performSearch);
+        });
+    </script>
+</body>
+</html>
