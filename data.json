@@ -14,10 +14,14 @@
       { "name": "Linux.do", "url": "https://linux.do", "desc": "" },
       { "name": "chiphell", "url": "https://www.chiphell.com/forum-146-1.html", "desc": "" },
       { "name": "Hacker News Top", "url": "https://news.ycombinator.com", "desc": "" },
+      { "name": "vscodeDev", "url": "https://vscode.dev/?vscode-lang=zh-cn", "desc": "" },
       { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
       { "name": "Youtube", "url": "https://www.youtube.com", "desc": "" },
       { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
-      { "name": "Oracle", "url": "https://www.oracle.com/cn/cloud/free", "desc": "" }
+      { "name": "HAX续期", "url": "https://hax.co.id/vps-renew", "desc": "" },
+      { "name": "Oracle", "url": "https://www.oracle.com/cn/cloud/free", "desc": "" },
+      { "name": "nodeseek", "url": "https://www.nodeseek.com", "desc": "" },
+      { "name": "NodeQuality", "url": "https://github.com/LloydAsp/NodeQuality", "desc": "" }
     ]
   },
   {
