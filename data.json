@@ -72,20 +72,8 @@
     ]
   },
   {
-    "category": "聚合",
-    "items": [
-      { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
-      { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
-      { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
-      { "name": "fre321", "url": "https://fre123.com", "desc": "网站聚合" },
-      { "name": "工具箱", "url": "https://666666.dev", "desc": "网站聚合" },
-      { "name": "不死鸟", "url": "https://iui.su/", "desc": "推荐网站的网站" }
-    ]
-  },
-  {
     "category": "Web",
     "items": [
-      
       { "name": "沉浸式翻译", "url": "https://immersivetranslate.com/zh-Hans/docs/sites/", "desc": "探索互联网上高质量的内容" },
       { "name": "有用经验", "url": "https://yyjingyan.com/", "desc": "经验分享网站" },
       { "name": "Apple参数", "url": "https://hubweb.cn/", "desc": "Apple 苹果产品参数中心" },
@@ -184,6 +172,17 @@
       { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
       { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
       { "name": "becomesovran", "url": "https://becomesovran.com/blog/server-setup-basics.html", "desc": "linux服务器初始化" }
+    ]
+  },
+  {
+    "category": "聚合",
+    "items": [
+      { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
+      { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
+      { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
+      { "name": "fre321", "url": "https://fre123.com", "desc": "网站聚合" },
+      { "name": "工具箱", "url": "https://666666.dev", "desc": "网站聚合" },
+      { "name": "不死鸟", "url": "https://iui.su/", "desc": "推荐网站的网站" }
     ]
   }
 ]
