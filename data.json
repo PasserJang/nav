@@ -1,39 +1,92 @@
 [
   {
-    "category": "常用网站",
+    "category": "内网",
     "items": [
       { "name": "immortalWrt", "url": "http://10.10.10.1", "desc": "" },
-      { "name": "zashBoard", "url": "http://10.10.10.4:20580", "desc": "" },
       { "name": "fnOS", "url": "http://10.10.10.4", "desc": "" },
+      { "name": "zashBoard", "url": "http://10.10.10.4:20580", "desc": "" },
       { "name": "openSpeedtest", "url": "http://10.10.10.4:8080", "desc": "" },
+      { "name": "PVE", "url": "http://10.10.10.254:8006", "desc": "" }
+    ]
+  },
+  {
+    "category": "AI",
+    "items": [
       { "name": "gemini", "url": "https://gemini.google.com", "desc": "" },
       { "name": "chatGPT", "url": "https://chatgpt.com", "desc": "" },
       { "name": "千问", "url": "https://www.tongyi.com", "desc": "" },
-      { "name": "豆包", "url": "https://www.doubao.com", "desc": "" },
+      { "name": "豆包", "url": "https://www.doubao.com", "desc": "" }
+    ]
+  },
+  {
+    "category": "论坛",
+    "items": [
       { "name": "V2ex", "url": "https://www.v2ex.com/?tab=hot", "desc": "" },
       { "name": "Linux.do", "url": "https://linux.do", "desc": "" },
       { "name": "chiphell", "url": "https://www.chiphell.com/forum-146-1.html", "desc": "" },
-      { "name": "Hacker News Top", "url": "https://news.ycombinator.com", "desc": "" },
+      { "name": "Hacker News Top", "url": "https://news.ycombinator.com", "desc": "国外科技热门讨论" },
+      { "name": "nodeseek", "url": "https://www.nodeseek.com", "desc": "VPS讨论" },
+      { "name": "恩山", "url": "https://www.right.com.cn/forum/forum.php", "desc": "" },
+      { "name": "流星社区", "url": "https://bbs.liuxingw.com/f/0.html", "desc": "免流教程" },
+      { "name": "百度贴吧", "url": "https://tieba.baidu.com/f?kw=%E9%87%8D%E5%BA%86%E8%81%94%E9%80%9A&ie=utf-8", "desc": "重庆联通吧" }
+    ]
+  },
+  {
+    "category": "常用网站",
+    "items": [
       { "name": "vscodeDev", "url": "https://vscode.dev/?vscode-lang=zh-cn", "desc": "" },
       { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
-      { "name": "Youtube", "url": "https://www.youtube.com", "desc": "" },
       { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
-      { "name": "HAX续期", "url": "https://hax.co.id/vps-renew", "desc": "" },
+      { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" } 
+    ]
+  },
+  {
+    "category": "VPS",
+    "items": [
+      { "name": "HAX", "url": "https://hax.co.id/vps-renew", "desc": "HAX续期" },
       { "name": "Oracle", "url": "https://www.oracle.com/cn/cloud/free", "desc": "" },
-      { "name": "nodeseek", "url": "https://www.nodeseek.com", "desc": "" },
-      { "name": "NodeQuality", "url": "https://github.com/LloydAsp/NodeQuality", "desc": "" }
+      { "name": "warp脚本", "url": "https://gitlab.com/fscarmen/warp", "desc": "fscarmen" },
+      { "name": "NodeQuality", "url": "https://github.com/LloydAsp/NodeQuality", "desc": "VPS评测脚本" },
+      { "name": "常用VPS脚本", "url": "https://www.nodeseek.com/post-183694-1", "desc": "" },
+      { "name": "VPS脚本", "url": "https://likeable-fuschia-f06.notion.site/VPS-76f1905f566942dabfa7f95317a0d2ca", "desc": "VPS一键脚本合集(持更~)" }
+    ]
+  },
+  {
+    "category": "工具",
+    "items": [
+      { "name": "墨鱼去广告", "url": "https://github.com/ddgksf2013", "desc": "" },
+      { "name": "网络面板", "url": "https://net.netart.cn", "desc": "持续流量测速" },
+      { "name": "证书", "url": "https://crt.sh/", "desc": "证书信息查询" },
+      { "name": "DNS", "url": "https://dns.surf", "desc": "DNS查询-全球地图可视化" },
+      { "name": "SKK-IP", "url": "https://ip.skk.moe", "desc": "skk的ip详细信息" },
+      { "name": "IPCheck", "url": "https://ipcheck.ing", "desc": "ip详细信息" },
+      { "name": "Ping0", "url": "https://ping0.cc", "desc": "家宽纯净度参考" },
+      { "name": "IPData", "url": "https://ipdata.co", "desc": "IP分数相关" },
+      { "name": "端口扫描", "url": "https://mtool.chinaz.com/port", "desc": "检测端口防火墙是否打开" },
+      { "name": "代理检测", "url": "https://proxy.incolumitas.com/proxy_detect.html", "desc": "识别代理/VPN检测主要手段" },
+      { "name": "tcpMK", "url": "https://tcp.mk", "desc": "高效的网络工具箱，旨在帮助运维和开发提高效率" },
+      { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
+      { "name": "speed test", "url": "https://speed.cloudflare.com", "desc": "cloudflare测速网站" },
+      { "name": "TCP调参", "url": "https://omnitt.com", "desc": "计算sysctl.conf" },
+      { "name": "sing-box配置", "url": "https://github.com/xishang0128/sub-store-template", "desc": "" }
+    ]
+  },
+  {
+    "category": "聚合",
+    "items": [
+      { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
+      { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
+      { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
+      { "name": "fre321", "url": "https://fre123.com", "desc": "网站聚合" },
+      { "name": "工具箱", "url": "https://666666.dev", "desc": "网站聚合" },
+      { "name": "不死鸟", "url": "https://iui.su/", "desc": "推荐网站的网站" }
     ]
   },
   {
     "category": "Web",
     "items": [
-      { "name": "墨鱼去广告", "url": "https://github.com/ddgksf2013", "desc": "" },
-      { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
-      { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
-      { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
-      { "name": "fre321", "url": "https://www.fre321.com", "desc": "网站聚合" },
-      { "name": "工具箱", "url": "https://666666.dev/", "desc": "网站聚合" },
-      { "name": "不死鸟", "url": "https://iui.su/", "desc": "资源" },
+      
+      { "name": "沉浸式翻译", "url": "https://immersivetranslate.com/zh-Hans/docs/sites/", "desc": "探索互联网上高质量的内容" },
       { "name": "有用经验", "url": "https://yyjingyan.com/", "desc": "经验分享网站" },
       { "name": "Apple参数", "url": "https://hubweb.cn/", "desc": "Apple 苹果产品参数中心" },
       { "name": "哲风壁纸", "url": "https://haowallpaper.com", "desc": "" },
@@ -61,7 +114,6 @@
       { "name": "tunemymusic", "url": "https://www.tunemymusic.com/zh-CN", "desc": "各音乐平台歌单互转" },
       { "name": "Logi Web Connect", "url": "https://logiwebconnect.com", "desc": "罗技网页连接设备" },
       { "name": "webSpy", "url": "https://webspy.site", "desc": "网站流量分析" },
-      { "name": "VPS脚本", "url": "https://likeable-fuschia-f06.notion.site/VPS-76f1905f566942dabfa7f95317a0d2ca", "desc": "VPS一键脚本合集(持更~)" },
       { "name": "sms", "url": "https://www.zusms.com", "desc": "免费短信接收平台" },
       { "name": "jetbra", "url": "https://3.jetbra.in", "desc": "jetbrains (idea等工具) 破解信息" },
       { "name": "SMS", "url": "https://sms-activate.guru/cn", "desc": "在线收费短信接码平台" },
@@ -111,26 +163,6 @@
       { "name": "不忘初心系统", "url": "https://www.123pan.com/s/7geA-fW3Hd", "desc": "" },
       { "name": "123云盘解锁", "url": "https://github.com/QingJ01/123pan_unlock", "desc": "" },
       { "name": "sysin", "url": "https://sysin.cn/", "desc": "Mac OS系统相关，如下载重装等..." }
-    ]
-  },
-  {
-    "category": "网络工具",
-    "items": [
-      { "name": "证书", "url": "https://crt.sh/", "desc": "证书信息查询" },
-      { "name": "DNS", "url": "https://dns.surf", "desc": "DNS查询-全球地图可视化" },
-      { "name": "kkTerminal", "url": "https://ssh.kkbpro.com", "desc": "网页版SSH工具" },
-      { "name": "SKK-IP", "url": "https://ip.skk.moe", "desc": "skk的ip详细信息" },
-      { "name": "IPCheck", "url": "https://ipcheck.ing", "desc": "ip详细信息" },
-      { "name": "Ping0", "url": "https://ping0.cc", "desc": "家宽纯净度参考" },
-      { "name": "网络面板", "url": "https://net.netart.cn", "desc": "持续流量测速" },
-      { "name": "IPData", "url": "https://ipdata.co", "desc": "IP分数相关" },
-      { "name": "端口扫描", "url": "https://mtool.chinaz.com/port", "desc": "检测端口防火墙是否打开" },
-      { "name": "代理检测", "url": "https://proxy.incolumitas.com/proxy_detect.html", "desc": "识别代理/VPN检测主要手段" },
-      { "name": "tcpMK", "url": "https://tcp.mk", "desc": "高效的网络工具箱，旨在帮助运维和开发提高效率" },
-      { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
-      { "name": "speed test", "url": "https://speed.cloudflare.com", "desc": "cloudflare测速网站" },
-      { "name": "TCP调参", "url": "https://omnitt.com", "desc": "计算sysctl.conf" },
-      { "name": "sing-box配置", "url": "https://github.com/xishang0128/sub-store-template", "desc": "" }
     ]
   },
   {
