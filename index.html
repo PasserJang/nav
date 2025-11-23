@@ -2,399 +2,402 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.ico" sizes="16x16" type="image/x-icon">
     <link rel="icon" href="./favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="./favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
-    <title>个人导航</title>
-    <style>
-        /* === 全局变量 === */
-        :root {
-            --bg-color: #f4f6f8;
-            --card-bg: #ffffff;
-            --primary-color: #b0b5b6;
-            --text-main: #333333;
-            --text-sub: #666666;
-            --input-bg: #ffffff;
-            --input-border: #dddddd;
-            --shadow: 0 2px 4px rgba(0,0,0,0.05);
-            --hover-shadow: 0 6px 12px rgba(0,0,0,0.1);
-            --radius: 8px;
-            
-            /* 图标相关设置 */
-            --icon-size: 16px; /* 正常的 Favicon 大小 */
-            --icon-gap: 16px;
-        }
-
-        /* === Dark Mode === */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1a1a1a;
-                --card-bg: #2d2d2d;
-                --primary-color: #030303;
-                --text-main: #e0e0e0;
-                --text-sub: #a0a0a0;
-                --input-bg: #2d2d2d;
-                --input-border: #444444;
-                --shadow: 0 2px 4px rgba(0,0,0,0.3);
-                --hover-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>个人导航 | My Nav</title>
+    <meta name="description" content="个人私有导航页">
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'media', 
+            theme: {
+                extend: {
+                    colors: {
+                        gray: {
+                            850: '#1f2937',
+                            900: '#111827',
+                            950: '#0b0f19',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(4px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    </script>
+    <style>
+        /* 基础设置 */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            padding: 20px;
-            transition: background-color 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* === 搜索栏 === */
-        .search-container {
-            max-width: 800px;
-            margin: 30px auto 40px;
-            display: flex;
-            gap: 10px;
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-            background: var(--bg-color);
-            padding: 10px;
-            border-radius: var(--radius);
-            /* 简单的毛玻璃背景适配 */
-            backdrop-filter: blur(10px); 
-            box-shadow: var(--shadow);
-            border: 1px solid transparent;
-        }
-
-        .search-engine-select {
-            padding: 0 15px;
-            height: 45px;
-            border: 1px solid var(--input-border);
-            border-radius: var(--radius);
-            background: var(--input-bg);
-            color: var(--text-main);
-            outline: none;
-            cursor: pointer;
-        }
-
-        .search-input {
-            flex: 1;
-            height: 45px;
-            padding: 0 20px;
-            border: 1px solid var(--input-border);
-            border-radius: var(--radius);
-            background: var(--input-bg);
-            color: var(--text-main);
-            font-size: 16px;
-            outline: none;
-        }
-
-        .search-input:focus { border-color: var(--primary-color); }
-
-        .search-btn {
-            height: 45px;
-            padding: 0 25px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
-            cursor: pointer;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        /* === 导航区域 === */
-        .main-container { max-width: 1000px; margin: 0 auto; padding-bottom: 50px; }
-
-        .category-section { margin-bottom: 30px; }
-
-        .category-title {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            padding-left: 10px;
-            border-left: 4px solid var(--primary-color);
-            color: var(--text-main);
-        }
-
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        /* === 卡片样式 === */
-        .link-card {
-            background: var(--card-bg);
-            padding: 12px 15px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            align-items: center; /* 垂直居中 */
-            gap: var(--icon-gap);
-            border: 1px solid transparent;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .link-card { border: 1px solid #3d3d3d; }
-        }
-
-        .link-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--hover-shadow);
-            border-color: var(--primary-color);
-        }
-
-        /* === JS动态插入的图标样式 === */
-        .link-icon {
-            width: var(--icon-size);
-            height: var(--icon-size);
-            border-radius: 4px; /* 轻微圆角，类似APP图标 */
-            flex-shrink: 0;
-            object-fit: contain; 
-        }
-
-        .link-content {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            flex: 1;
-        }
-
-        .link-name {
-            font-weight: 600;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            line-height: 1.2;
-            margin-bottom: 2px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .link-desc {
-            font-size: 0.75rem;
-            color: var(--text-sub);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.2;
-        }
-
-        /* === 辅助类 === */
-        .hidden { display: none !important; }
-        #loading { text-align: center; margin-top: 50px; color: var(--text-sub); }
-
-        @media (max-width: 600px) {
-            .search-container { flex-direction: column; }
-            .link-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        /* 隐藏滚动条但保留功能 */
+        ::-webkit-scrollbar { width: 0px; height: 0px; }
+        
+        /* 横向滚动容器优化 */
+        .scroll-container {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            mask-image: linear-gradient(to right, transparent, black 12px, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%);
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <div class="search-container">
-        <select id="engine-select" class="search-engine-select">
-            <option value="google">Google</option>
-            <option value="bing">Bing</option>
-            <option value="baidu">Baidu</option>
-        </select>
-        <input type="text" id="search-input" class="search-input" placeholder="搜索链接或网络...">
-        <button id="search-btn" class="search-btn">搜索</button>
-    </div>
+    <!-- 顶部 Header & 搜索 -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3">
+            <!-- Logo -->
+            <div class="font-bold text-lg tracking-tight text-blue-600 dark:text-blue-500 shrink-0 cursor-pointer select-none active:opacity-70 transition-opacity" onclick="resetView()">
+                PasserJ's Nav
+            </div>
 
-    <div id="loading">正在加载配置...<br><small>(请确保使用本地服务器运行)</small></div>
-    <div id="nav-container" class="main-container"></div>
+            <!-- 搜索框 -->
+            <div class="flex-1 max-w-lg">
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        class="block w-full pl-9 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-gray-100/50 dark:bg-gray-800/50 placeholder-gray-500 focus:outline-none focus:bg-white dark:focus:bg-black focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 transition-all duration-200 text-sm"
+                        placeholder="搜索..."
+                    >
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- 主要内容区域 -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-0 sm:px-6 lg:px-8 py-4 min-h-[50vh]" id="mainContainer">
+        
+        <!-- 默认展示区域 -->
+        <div id="projectsContainer" class="space-y-8 pb-10">
+            <div class="flex justify-center items-center h-40 text-gray-400 gap-2">
+                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span class="text-sm">Loading...</span>
+            </div>
+        </div>
+
+        <!-- 搜索结果区域 -->
+        <div id="searchResultsContainer" class="hidden px-4 sm:px-0 space-y-8 pb-10"></div>
+    </main>
+
+    <!-- 逻辑脚本 -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('nav-container');
-            const searchInput = document.getElementById('search-input');
-            const searchBtn = document.getElementById('search-btn');
-            const engineSelect = document.getElementById('engine-select');
-            const loading = document.getElementById('loading');
+        let fullData = null;           
+        let projectKeys = [];          
+        let activeCategories = {}; 
 
-            // 1. 读取数据
-            fetch('data.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Network error');
-                    return response.json();
-                })
-                .then(data => {
-                    renderNav(data);
-                    loading.style.display = 'none';
-                    // 渲染完成后，调用你的图标加载函数
-                    addFavicons();
-                })
-                .catch(error => {
-                    loading.innerHTML = `<span style="color:red;">加载失败: ${error.message}</span>`;
-                });
+        // === 图标处理逻辑开始 ===
+        
+        // 当图片加载完成（无论成功与否）
+        window.handleImageLoad = function(img) {
+            // Yandex API 特性：如果未找到图标，常返回 1x1 的透明像素
+            // 如果检测到是 1x1，我们视为加载失败，尝试备选方案
+            if (img.naturalWidth === 1 && img.naturalHeight === 1) {
+                handleImageError(img);
+            } else {
+                // 加载成功且尺寸正常，确保显示
+                img.style.opacity = '1';
+            }
+        };
 
-            // 2. 渲染 HTML 结构
-            function renderNav(data) {
-                container.innerHTML = '';
-                
-                data.forEach((category, index) => {
-                    const section = document.createElement('div');
-                    section.className = 'category-section';
+        // 当图片加载出错（或被视为出错）
+        window.handleImageError = function(img) {
+            // 防止死循环
+            if (img.dataset.state === 'failed') return;
+
+            // 如果还没试过直连 /favicon.ico
+            if (!img.dataset.triedDirect) {
+                img.dataset.triedDirect = 'true';
+                try {
+                    const url = new URL(img.dataset.url);
+                    // 尝试加载网站根目录的 favicon.ico
+                    img.src = `${url.origin}/favicon.ico`;
+                } catch (e) {
+                    fail(img);
+                }
+            } else {
+                // 两次都失败了
+                fail(img);
+            }
+        };
+
+        // 最终失败处理：隐藏图片，露出底下的彩色首字母层
+        function fail(img) {
+            img.dataset.state = 'failed';
+            img.style.opacity = '0'; // 关键：隐藏 img，显示底层的 div
+        }
+
+        // === 图标处理逻辑结束 ===
+
+        async function init() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                fullData = await response.json();
+                projectKeys = Object.keys(fullData);
+
+                if (projectKeys.length > 0) {
+                    projectKeys.forEach(key => activeCategories[key] = 0);
+                    renderAllProjects();
+                } else {
+                    document.getElementById('projectsContainer').innerHTML = '<p class="text-center text-gray-500 mt-10">暂无数据</p>';
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('projectsContainer').innerHTML = `
+                    <div class="text-center text-red-500 py-10 px-4">
+                        <p class="font-bold">加载失败</p>
+                        <p class="text-xs mt-2 text-gray-400">请检查 data.json</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderAllProjects() {
+            const container = document.getElementById('projectsContainer');
+            
+            container.innerHTML = projectKeys.map((key, idx) => {
+                const categories = fullData[key];
+                const gridsHTML = categories.map((cat, catIdx) => {
+                    const isVisible = catIdx === 0;
+                    const displayClass = isVisible ? 'grid animate-fade-in' : 'hidden';
                     
-                    const title = document.createElement('h2');
-                    title.className = 'category-title';
-                    title.textContent = category.category;
-                    section.appendChild(title);
+                    return `
+                        <div id="grid-${key}-${catIdx}" class="${displayClass} grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                            ${cat.items.map(item => createCard(item)).join('')}
+                        </div>
+                    `;
+                }).join('');
 
-                    const grid = document.createElement('div');
-                    grid.className = 'link-grid';
+                return `
+                <section id="section-${key}" class="animate-fade-in group">
+                    ${idx !== 0 ? '<div class="h-px bg-gray-100 dark:bg-gray-800/60 mx-4 sm:mx-0 mb-6"></div>' : ''}
+                    
+                    <div class="relative mb-4">
+                         <nav id="tabs-${key}" class="scroll-container flex space-x-2 overflow-x-auto px-4 sm:px-1 pb-2 pt-1">
+                            ${renderTabButtons(key)}
+                         </nav>
+                    </div>
 
-                    category.items.forEach(item => {
-                        const a = document.createElement('a');
-                        a.href = item.url;
-                        // 注意：这里添加了 nav-link 类，以便你的函数能通过 querySelectorAll 找到它
-                        a.className = 'link-card nav-link'; 
-                        a.target = '_blank';
-                        a.rel = 'noopener noreferrer';
-                        a.dataset.search = (item.name + item.desc).toLowerCase();
+                    <div class="min-h-[100px] px-4 sm:px-0">
+                        ${gridsHTML}
+                    </div>
+                </section>
+                `;
+            }).join('');
+        }
 
-                        // 初始不插入 img，由 addFavicons 函数后续插入
-                        a.innerHTML = `
-                            <div class="link-content">
-                                <div class="link-name">${item.name}</div>
-                                <div class="link-desc">${item.desc || ''}</div>
-                            </div>
-                        `;
-                        grid.appendChild(a);
-                    });
+        function renderTabButtons(projectKey) {
+            const categories = fullData[projectKey] || [];
+            const activeIndex = activeCategories[projectKey];
 
-                    section.appendChild(grid);
-                    container.appendChild(section);
-                });
+            if (categories.length === 0) return '<span class="text-xs text-gray-400">无分类</span>';
+
+            return categories.map((cat, index) => {
+                const isActive = index === activeIndex;
+                return `
+                    <button 
+                        data-idx="${index}"
+                        onclick="switchCategory('${projectKey}', ${index}, this)"
+                        class="tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                            isActive 
+                            ? 'bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold' 
+                            : 'bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200'
+                        }"
+                    >
+                        ${cat.category}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        window.switchCategory = function(projectKey, index, btnElement) {
+            const oldIndex = activeCategories[projectKey];
+            if (oldIndex === index) return; 
+
+            activeCategories[projectKey] = index;
+
+            const oldGrid = document.getElementById(`grid-${projectKey}-${oldIndex}`);
+            const newGrid = document.getElementById(`grid-${projectKey}-${index}`);
+            
+            if (oldGrid) {
+                oldGrid.classList.add('hidden');
+                oldGrid.classList.remove('grid', 'animate-fade-in');
+            }
+            if (newGrid) {
+                newGrid.classList.remove('hidden');
+                newGrid.classList.add('grid', 'animate-fade-in');
             }
 
-            // 3. 图标加载逻辑 (整合了你的代码)
-            function addFavicons() {
-                const links = document.querySelectorAll(".nav-link");
-                const REQUEST_TIMEOUT_MS = 3000;
-                const COLORS = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
+            const container = document.getElementById(`tabs-${projectKey}`);
+            const buttons = container.getElementsByTagName('button');
+            
+            for (let btn of buttons) {
+                btn.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200';
+            }
+            
+            if (btnElement) {
+                btnElement.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold';
+                btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
 
-                links.forEach((link) => {
-                    try {
-                        const url = new URL(link.href);
-                        const favicon = document.createElement("img");
-                        
-                        // === 关键修改：添加 CSS 类名以便控制大小 ===
-                        favicon.className = 'link-icon'; 
-                        
-                        let currentTimer; 
+        function createCard(item) {
+            // 初始尝试使用 Yandex
+            const primaryIcon = `https://favicon.yandex.net/favicon/${extractHostname(item.url)}?size=32`;
+            
+            const safeName = item.name ? item.name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
+            const safeDesc = item.desc ? item.desc.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
+            const firstChar = safeName.charAt(0).toUpperCase();
+            const bgColor = getColorFromName(safeName);
 
-                        // Step 3: SVG 默认图标
-                        const setDefaultIcon = () => {
-                            clearTimeout(currentTimer); 
-                            favicon.onload = null; 
-                            favicon.onerror = null;
+            // 结构：
+            // 底层：div (纯色背景 + 文字) -> 永远存在
+            // 上层：img (带白色背景) -> 加载成功遮住底层，失败透明露出底层
+            return `
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
+               class="group relative flex items-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-300 h-full overflow-hidden">
+                
+                <div class="flex-shrink-0 mr-3 w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-inner relative bg-gray-50 dark:bg-gray-700/50">
+                    <!-- 底层 Fallback (相当于你代码中的 SVG 逻辑) -->
+                    <div class="absolute inset-0 flex items-center justify-center text-white/90 text-sm sm:text-base font-bold shadow-inner z-0 select-none" 
+                         style="background-color: ${bgColor};">
+                        ${firstChar}
+                    </div>
+                    
+                    <!-- 上层 Image -->
+                    <img 
+                        src="${primaryIcon}" 
+                        data-url="${item.url}"
+                        alt="${safeName}" 
+                        class="relative z-10 w-full h-full object-contain p-1.5 transition-opacity duration-300 bg-white dark:bg-gray-800"
+                        loading="lazy"
+                        onload="handleImageLoad(this)"
+                        onerror="handleImageError(this)"
+                    />
+                </div>
 
-                            const linkText = link.querySelector('.link-name').textContent.trim(); // 获取链接文字
-                            const initial = (linkText ? linkText[0] : url.hostname[0]).toUpperCase();
+                <div class="flex-1 min-w-0 flex flex-col justify-center">
+                    <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate transition-colors">
+                        ${safeName}
+                    </h3>
+                    <p class="text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 truncate mt-0.5 font-medium">
+                        ${safeDesc || extractDomain(item.url)}
+                    </p>
+                </div>
+            </a>`;
+        }
 
-                            let hash = 0;
-                            for (let i = 0; i < url.hostname.length; i++) {
-                                hash = url.hostname.charCodeAt(i) + ((hash << 5) - hash);
-                            }
-                            const colorIndex = Math.abs(hash % COLORS.length);
-                            const bgColor = COLORS[colorIndex];
+        window.resetView = function() {
+            const input = document.getElementById('searchInput');
+            input.value = '';
+            input.blur();
+            toggleSearchMode(false);
+        }
 
-                            const svg = `
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <rect width="100" height="100" fill="${bgColor}"/>
-                                    <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" 
-                                          font-size="55" fill="white" font-family="sans-serif" font-weight="bold">
-                                        ${initial}
-                                    </text>
-                                </svg>
-                            `;
-                            favicon.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-                        };
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.trim();
+            if (val.length > 0) {
+                toggleSearchMode(true);
+                renderSearchResults(val);
+            } else {
+                toggleSearchMode(false);
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== searchInput) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Enter') {
+                const val = searchInput.value.trim();
+                if (val) window.open(`https://www.google.com/search?q=${encodeURIComponent(val)}`, '_blank');
+            }
+        });
 
-                        // Step 2: Direct /favicon.ico
-                        const tryDirectFavicon = () => {
-                            clearTimeout(currentTimer); 
-                            currentTimer = setTimeout(() => {
-                                setDefaultIcon(); 
-                            }, REQUEST_TIMEOUT_MS);
+        function toggleSearchMode(isSearch) {
+            const projectsDiv = document.getElementById('projectsContainer');
+            const resultsDiv = document.getElementById('searchResultsContainer');
+            if (isSearch) {
+                projectsDiv.classList.add('hidden');
+                resultsDiv.classList.remove('hidden');
+            } else {
+                projectsDiv.classList.remove('hidden');
+                resultsDiv.classList.add('hidden');
+            }
+        }
 
-                            favicon.onload = () => { clearTimeout(currentTimer); };
-                            favicon.onerror = () => {
-                                clearTimeout(currentTimer); 
-                                setDefaultIcon(); 
-                            };
-                            favicon.src = `https://${url.hostname}/favicon.ico`;
-                        };
-
-                        // Step 1: Yandex API
-                        const tryYandex = () => {
-                            currentTimer = setTimeout(() => {
-                                tryDirectFavicon(); 
-                            }, REQUEST_TIMEOUT_MS);
-
-                            favicon.onload = () => {
-                                clearTimeout(currentTimer); 
-                                if (favicon.naturalWidth === 1 && favicon.naturalHeight === 1) {
-                                    tryDirectFavicon(); 
-                                }
-                            };
-                            favicon.onerror = () => {
-                                clearTimeout(currentTimer); 
-                                tryDirectFavicon(); 
-                            };
-                            favicon.src = `https://favicon.yandex.net/favicon/${url.hostname}`;
-                        };
-
-                        // 插入图标到最前面
-                        link.insertBefore(favicon, link.firstChild);
-                        tryYandex();
-                    } catch (e) {
-                        console.error("Error processing favicon:", e);
+        function renderSearchResults(filterText) {
+            const resultsDiv = document.getElementById('searchResultsContainer');
+            let matchedGroups = []; 
+            projectKeys.forEach(pKey => {
+                fullData[pKey].forEach(cat => {
+                    const matches = cat.items.filter(item => 
+                        (item.name + item.desc + item.url).toLowerCase().includes(filterText.toLowerCase())
+                    );
+                    if (matches.length > 0) {
+                        matchedGroups.push({ title: cat.category, items: matches });
                     }
-                });
-            }
-
-            // 4. 搜索功能
-            searchInput.addEventListener('input', (e) => {
-                const keyword = e.target.value.toLowerCase().trim();
-                document.querySelectorAll('.category-section').forEach(section => {
-                    const cards = section.querySelectorAll('.link-card');
-                    let hasVisible = false;
-                    cards.forEach(card => {
-                        if (card.dataset.search.includes(keyword)) {
-                            card.classList.remove('hidden');
-                            hasVisible = true;
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                    hasVisible ? section.classList.remove('hidden') : section.classList.add('hidden');
                 });
             });
 
-            function performSearch() {
-                const query = searchInput.value.trim();
-                if (!query) return;
-                const engine = engineSelect.value;
-                let url = '';
-                if (engine === 'google') url = `https://www.google.com/search?q=${query}`;
-                else if (engine === 'bing') url = `https://www.bing.com/search?q=${query}`;
-                else url = `https://www.baidu.com/s?wd=${query}`;
-                window.open(url, '_blank');
+            if (matchedGroups.length === 0) {
+                resultsDiv.innerHTML = `
+                    <div class="text-center py-20 animate-fade-in">
+                        <div class="text-4xl mb-4 grayscale opacity-50">🔍</div>
+                        <h3 class="text-base font-medium text-gray-600 dark:text-gray-400">未找到 "${filterText}"</h3>
+                        <p class="text-gray-400 text-xs mt-2">按 Enter 尝试 Google 搜索</p>
+                    </div>`;
+                return;
             }
 
-            searchInput.addEventListener('keydown', (e) => { if(e.key === 'Enter') performSearch(); });
-            searchBtn.addEventListener('click', performSearch);
-        });
+            resultsDiv.innerHTML = matchedGroups.map(group => `
+                <div class="animate-fade-in">
+                    <h3 class="text-xs font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-wider pl-1">
+                        ${group.title}
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                        ${group.items.map(item => createCard(item)).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function extractHostname(urlStr) { try { return new URL(urlStr).hostname; } catch (e) { return ''; } }
+        function extractDomain(urlStr) { try { return new URL(urlStr).hostname.replace(/^www\./, ''); } catch(e) { return ''; } }
+        function getColorFromName(name) {
+            // 使用与你代码示例类似的鲜艳色系
+            const colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            return colors[Math.abs(hash) % colors.length];
+        }
+
+        init();
     </script>
 </body>
 </html>
