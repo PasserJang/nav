@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="./favicon.ico" sizes="16x16" type="image/x-icon">
@@ -14,7 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'media',
+            darkMode: 'media', 
             theme: {
                 extend: {
                     colors: {
@@ -44,11 +43,8 @@
         }
 
         /* 隐藏滚动条但保留功能 */
-        ::-webkit-scrollbar {
-            width: 0px;
-            height: 0px;
-        }
-
+        ::-webkit-scrollbar { width: 0px; height: 0px; }
+        
         /* 横向滚动容器优化 */
         .scroll-container {
             -webkit-overflow-scrolling: touch;
@@ -59,17 +55,13 @@
         }
     </style>
 </head>
-
-<body
-    class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
     <!-- 顶部 Header & 搜索 -->
-    <header
-        class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3">
             <!-- Logo -->
-            <div class="font-bold text-lg tracking-tight text-blue-600 dark:text-blue-500 shrink-0 cursor-pointer select-none active:opacity-70 transition-opacity"
-                onclick="resetView()">
+            <div class="font-bold text-lg tracking-tight text-blue-600 dark:text-blue-500 shrink-0 cursor-pointer select-none active:opacity-70 transition-opacity" onclick="resetView()">
                 PasserJ's Nav
             </div>
 
@@ -77,16 +69,16 @@
             <div class="flex-1 max-w-lg">
                 <div class="relative group">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd" />
+                        <svg class="h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" id="searchInput"
+                    <input 
+                        type="text" 
+                        id="searchInput"
                         class="block w-full pl-9 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-gray-100/50 dark:bg-gray-800/50 placeholder-gray-500 focus:outline-none focus:bg-white dark:focus:bg-black focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 transition-all duration-200 text-sm"
-                        placeholder="搜索...">
+                        placeholder="搜索..."
+                    >
                 </div>
             </div>
         </div>
@@ -94,16 +86,13 @@
 
     <!-- 主要内容区域 -->
     <main class="flex-grow max-w-7xl mx-auto w-full px-0 sm:px-6 lg:px-8 py-4 min-h-[50vh]" id="mainContainer">
-
+        
         <!-- 默认展示区域 -->
         <div id="projectsContainer" class="space-y-8 pb-10">
             <div class="flex justify-center items-center h-40 text-gray-400 gap-2">
                 <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
-                        fill="none"></circle>
-                    <path class="opacity-75" fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                    </path>
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
                 <span class="text-sm">Loading...</span>
             </div>
@@ -115,14 +104,14 @@
 
     <!-- 逻辑脚本 -->
     <script>
-        let fullData = null;
-        let projectKeys = [];
-        let activeCategories = {};
+        let fullData = null;           
+        let projectKeys = [];          
+        let activeCategories = {}; 
 
         // === 图标处理逻辑开始 ===
-
+        
         // 当图片加载完成（无论成功与否）
-        window.handleImageLoad = function (img) {
+        window.handleImageLoad = function(img) {
             // Yandex API 特性：如果未找到图标，常返回 1x1 的透明像素
             // 如果检测到是 1x1，我们视为加载失败，尝试备选方案
             if (img.naturalWidth === 1 && img.naturalHeight === 1) {
@@ -134,7 +123,7 @@
         };
 
         // 当图片加载出错（或被视为出错）
-        window.handleImageError = function (img) {
+        window.handleImageError = function(img) {
             // 防止死循环
             if (img.dataset.state === 'failed') return;
 
@@ -163,92 +152,38 @@
         // === 图标处理逻辑结束 ===
 
         async function init() {
-            const CACHE_KEY = 'nav_data_cache';
-            const container = document.getElementById('projectsContainer');
-            let isRenderedFromCache = false;
-
-            // 1. 尝试从 LocalStorage 读取缓存 (立即渲染)
-            const cachedString = localStorage.getItem(CACHE_KEY);
-
-            if (cachedString) {
-                try {
-                    const cachedData = JSON.parse(cachedString);
-                    // 简单校验数据格式是否合法
-                    if (cachedData && typeof cachedData === 'object') {
-                        console.log('🚀 加载本地缓存');
-                        fullData = cachedData;
-                        processAndRender();
-                        isRenderedFromCache = true;
-                    }
-                } catch (e) {
-                    console.warn('缓存解析失败，已清理', e);
-                    localStorage.removeItem(CACHE_KEY);
-                }
-            }
-
-            // 2. 发起网络请求 (静默更新)
             try {
                 const response = await fetch('data.json');
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                fullData = await response.json();
+                projectKeys = Object.keys(fullData);
 
-                const newData = await response.json();
-
-                // 3. 对比数据是否变化 (简单的字符串比对)
-                if (JSON.stringify(newData) !== cachedString) {
-                    console.log('🔄 检测到数据更新，重新渲染');
-                    fullData = newData;
-
-                    // 更新缓存
-                    localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
-
-                    // 重新渲染
-                    processAndRender();
-
-                    // 可选：如果用户已经看了很久，突然刷新可能会造成困扰
-                    // 在这里可以加个 Toast 提示 "数据已更新"，但对于导航页，直接刷新是可以接受的
+                if (projectKeys.length > 0) {
+                    projectKeys.forEach(key => activeCategories[key] = 0);
+                    renderAllProjects();
                 } else {
-                    console.log('✅ 数据即最新，无需更新');
+                    document.getElementById('projectsContainer').innerHTML = '<p class="text-center text-gray-500 mt-10">暂无数据</p>';
                 }
             } catch (error) {
-                console.error('网络请求失败:', error);
-                // 如果没有缓存且网络失败，才显示错误页
-                if (!isRenderedFromCache) {
-                    container.innerHTML = `
-                <div class="text-center text-red-500 py-10 px-4 animate-fade-in">
-                    <p class="font-bold">加载失败</p>
-                    <p class="text-xs mt-2 text-gray-400">无法连接服务器且无本地缓存</p>
-                    <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-gray-200 rounded text-sm">重试</button>
-                </div>
-            `;
-                }
-            }
-        }
-
-        // 辅助函数：处理数据并调用渲染
-        function processAndRender() {
-            projectKeys = Object.keys(fullData);
-
-            // 只有当 activeCategories 为空时才初始化（防止后台刷新重置用户选中的 Tab）
-            if (Object.keys(activeCategories).length === 0) {
-                projectKeys.forEach(key => activeCategories[key] = 0);
-            }
-
-            if (projectKeys.length > 0) {
-                renderAllProjects();
-            } else {
-                document.getElementById('projectsContainer').innerHTML = '<p class="text-center text-gray-500 mt-10">暂无数据</p>';
+                console.error(error);
+                document.getElementById('projectsContainer').innerHTML = `
+                    <div class="text-center text-red-500 py-10 px-4">
+                        <p class="font-bold">加载失败</p>
+                        <p class="text-xs mt-2 text-gray-400">请检查 data.json</p>
+                    </div>
+                `;
             }
         }
 
         function renderAllProjects() {
             const container = document.getElementById('projectsContainer');
-
+            
             container.innerHTML = projectKeys.map((key, idx) => {
                 const categories = fullData[key];
                 const gridsHTML = categories.map((cat, catIdx) => {
                     const isVisible = catIdx === 0;
                     const displayClass = isVisible ? 'grid animate-fade-in' : 'hidden';
-
+                    
                     return `
                         <div id="grid-${key}-${catIdx}" class="${displayClass} grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
                             ${cat.items.map(item => createCard(item)).join('')}
@@ -286,10 +221,11 @@
                     <button 
                         data-idx="${index}"
                         onclick="switchCategory('${projectKey}', ${index}, this)"
-                        class="tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${isActive
-                        ? 'bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold'
-                        : 'bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200'
-                    }"
+                        class="tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                            isActive 
+                            ? 'bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold' 
+                            : 'bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200'
+                        }"
                     >
                         ${cat.category}
                     </button>
@@ -297,15 +233,15 @@
             }).join('');
         }
 
-        window.switchCategory = function (projectKey, index, btnElement) {
+        window.switchCategory = function(projectKey, index, btnElement) {
             const oldIndex = activeCategories[projectKey];
-            if (oldIndex === index) return;
+            if (oldIndex === index) return; 
 
             activeCategories[projectKey] = index;
 
             const oldGrid = document.getElementById(`grid-${projectKey}-${oldIndex}`);
             const newGrid = document.getElementById(`grid-${projectKey}-${index}`);
-
+            
             if (oldGrid) {
                 oldGrid.classList.add('hidden');
                 oldGrid.classList.remove('grid', 'animate-fade-in');
@@ -317,11 +253,11 @@
 
             const container = document.getElementById(`tabs-${projectKey}`);
             const buttons = container.getElementsByTagName('button');
-
+            
             for (let btn of buttons) {
                 btn.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200';
             }
-
+            
             if (btnElement) {
                 btnElement.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold';
                 btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
@@ -331,7 +267,7 @@
         function createCard(item) {
             // 初始尝试使用 Yandex
             const primaryIcon = `https://favicon.yandex.net/favicon/${extractHostname(item.url)}?size=32`;
-
+            
             const safeName = item.name ? item.name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
             const safeDesc = item.desc ? item.desc.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
             const firstChar = safeName.charAt(0).toUpperCase();
@@ -374,7 +310,7 @@
             </a>`;
         }
 
-        window.resetView = function () {
+        window.resetView = function() {
             const input = document.getElementById('searchInput');
             input.value = '';
             input.blur();
@@ -391,7 +327,7 @@
                 toggleSearchMode(false);
             }
         });
-
+        
         document.addEventListener('keydown', (e) => {
             if (e.key === '/' && document.activeElement !== searchInput) {
                 e.preventDefault();
@@ -417,10 +353,10 @@
 
         function renderSearchResults(filterText) {
             const resultsDiv = document.getElementById('searchResultsContainer');
-            let matchedGroups = [];
+            let matchedGroups = []; 
             projectKeys.forEach(pKey => {
                 fullData[pKey].forEach(cat => {
-                    const matches = cat.items.filter(item =>
+                    const matches = cat.items.filter(item => 
                         (item.name + item.desc + item.url).toLowerCase().includes(filterText.toLowerCase())
                     );
                     if (matches.length > 0) {
@@ -452,7 +388,7 @@
         }
 
         function extractHostname(urlStr) { try { return new URL(urlStr).hostname; } catch (e) { return ''; } }
-        function extractDomain(urlStr) { try { return new URL(urlStr).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+        function extractDomain(urlStr) { try { return new URL(urlStr).hostname.replace(/^www\./, ''); } catch(e) { return ''; } }
         function getColorFromName(name) {
             // 使用与你代码示例类似的鲜艳色系
             const colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
@@ -464,5 +400,4 @@
         init();
     </script>
 </body>
-
 </html>
