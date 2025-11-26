@@ -15,8 +15,9 @@
         { "name": "HAX", "url": "https://hax.co.id/vps-renew", "desc": "HAX续期" },
         { "name": "Oracle", "url": "https://www.oracle.com/cn/cloud/free", "desc": "" },
         { "name": "warp脚本", "url": "https://gitlab.com/fscarmen/warp", "desc": "fscarmen" },
-        { "name": "NodeQuality", "url": "https://github.com/LloydAsp/NodeQuality", "desc": "VPS评测脚本" },
+        { "name": "NodeQuality", "url": "https://github.com/LloydAsp/NodeQuality", "desc": "VPS评测一键脚本" },
         { "name": "常用VPS脚本", "url": "https://www.nodeseek.com/post-183694-1", "desc": "" },
+        { "name": "常用VPS命令", "url": "https://www.nodeseek.com/post-424648-1", "desc": "" },
         { "name": "VPS脚本", "url": "https://likeable-fuschia-f06.notion.site/VPS-76f1905f566942dabfa7f95317a0d2ca", "desc": "VPS一键脚本合集(持更~)" }
       ]
     },
@@ -30,7 +31,7 @@
         { "name": "IPCheck", "url": "https://ipcheck.ing", "desc": "ip详细信息" },
         { "name": "Ping0", "url": "https://ping0.cc", "desc": "家宽纯净度参考" },
         { "name": "IPData", "url": "https://ipdata.co", "desc": "IP分数相关" },
-        { "name": "端口扫描", "url": "https://mtool.chinaz.com/port", "desc": "检测端口防火墙是否打开" },
+        { "name": "iplark", "url": "https://iplark.com", "desc": "ip评分" },
         { "name": "代理检测", "url": "https://proxy.incolumitas.com/proxy_detect.html", "desc": "识别代理/VPN检测主要手段" },
         { "name": "tcpMK", "url": "https://tcp.mk", "desc": "高效的网络工具箱，旨在帮助运维和开发提高效率" },
         { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
@@ -43,9 +44,9 @@
       "category": "内网",
       "items": [
         { "name": "immortalWrt", "url": "http://10.10.10.1", "desc": "" },
-        { "name": "fnOS", "url": "http://10.10.10.4", "desc": "" },
         { "name": "zashBoard", "url": "http://10.10.10.4:20580", "desc": "" },
         { "name": "openSpeedtest", "url": "http://10.10.10.4:8080", "desc": "" },
+        { "name": "fnOS", "url": "http://10.10.10.4", "desc": "" },
         { "name": "PVE", "url": "http://10.10.10.254:8006", "desc": "" }
       ]
     }
@@ -82,7 +83,7 @@
         { "name": "狐狸老师", "url": "https://gitee.com/callmer", "desc": "pve、ros等工具使用教程" },
         { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
         { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
-        { "name": "becomesovran", "url": "https://becomesovran.com/blog/server-setup-basics.html", "desc": "linux服务器初始化" }
+        { "name": "geek", "url": "https://www.igeekbb.com", "desc": "含有hy2端口跳跃实践文章" }
       ]
     },
     {
@@ -126,6 +127,7 @@
         { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
         { "name": "fre321", "url": "https://fre123.com", "desc": "网站聚合" },
         { "name": "工具箱", "url": "https://666666.dev", "desc": "网站聚合" },
+        { "name": "小不点", "url": "https://xiaoso.net", "desc": "人性化的排版分类" },
         { "name": "不死鸟", "url": "https://iui.su/", "desc": "推荐网站的网站" }
       ]
     },
@@ -188,7 +190,8 @@
         { "name": "MDN", "url": "https://developer.mozilla.org/zh-CN/docs/Learn_web_development", "desc": "前端文档教程" },
         { "name": "书栈网", "url": "https://www.bookstack.cn", "desc": "程序员知识杂库" },
         { "name": "101 Linux", "url": "https://101.lug.ustc.edu.cn", "desc": "Linux知识大全" },
-        { "name": "CS自学指南", "url": "https://csdiy.wiki", "desc": "系统学习计算机" }
+        { "name": "CS自学指南", "url": "https://csdiy.wiki", "desc": "系统学习计算机" },
+        { "name": "CS面试笔记", "url": "https://cyc2018.xyz", "desc": "系统学习计算机" }
       ]
     }
   ]
