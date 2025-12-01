@@ -83,6 +83,7 @@
         { "name": "狐狸老师", "url": "https://gitee.com/callmer", "desc": "pve、ros等工具使用教程" },
         { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
         { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
+        { "name": "我不是盐神", "url": "https://onehu.xyz", "desc": "" },
         { "name": "geek", "url": "https://www.igeekbb.com", "desc": "含有hy2端口跳跃实践文章" }
       ]
     },
@@ -92,7 +93,7 @@
         { "name": "沉浸式翻译", "url": "https://immersivetranslate.com/zh-Hans/docs/sites/", "desc": "探索互联网上高质量的内容" },
         { "name": "有用经验", "url": "https://yyjingyan.com/", "desc": "经验分享网站" },
         { "name": "Apple参数", "url": "https://hubweb.cn/", "desc": "Apple 苹果产品参数中心" },
-        { "name": "哲风壁纸", "url": "https://haowallpaper.com", "desc": "" },
+        { "name": "wallhaven", "url": "https://wallhaven.cc", "desc": "壁纸下载" },
         { "name": "电鸭社区", "url": "https://eleduck.com", "desc": "专注远程工作招聘交流平台" },
         { "name": "轻松游牧", "url": "https://easynomad.cn", "desc": "远程工作集合" },
         { "name": "flight adsb", "url": "https://flightadsb.variflight.com", "desc": "航班实况图" },
@@ -103,7 +104,8 @@
         { "name": "樱花猫", "url": "https://dokidokiweb.com", "desc": "防失联地址" },
         { "name": "NealFun", "url": "https://neal.fun", "desc": "摸鱼小游戏合集" },
         { "name": "气温", "url": "https://climatereanalyzer.org/clim/t2_daily/?dm_id=world", "desc": "全球每年平均温度折线图" },
-        { "name": "小霸王", "url": "https://www.yikm.net", "desc": "FC游戏" }
+        { "name": "小霸王", "url": "https://www.yikm.net", "desc": "FC游戏" },
+        { "name": "appraven", "url": "https://appraven.net", "desc": "苹果软件限免，类酷安集合" }
       ]
     }
   ],
@@ -116,13 +118,12 @@
         { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
-        { "name": "墨鱼去广告", "url": "https://github.com/ddgksf2013", "desc": "" }
+        { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "" }
       ]
     },
     {
       "category": "聚合",
       "items": [
-        { "name": "墨鱼自用网站", "url": "https://github.com/ddgksf2013/WebSite", "desc": "网站聚合" },
         { "name": "BMM", "url": "https://bmm.lccl.cc", "desc": "网站聚合" },
         { "name": "开发者导航", "url": "http://www.cxy521.com", "desc": "网站聚合" },
         { "name": "fre321", "url": "https://fre123.com", "desc": "网站聚合" },
@@ -132,8 +133,10 @@
       ]
     },
     {
-      "category": "软件资源",
+      "category": "资源下载",
       "items": [
+        { "name": "z-library", "url": "https://z-library.sk", "desc": "书籍是人类进步的阶梯" },
+        { "name": "hifiti", "url": "https://www.hifiti.com", "desc": "音乐分享" },
         { "name": "MacWK", "url": "https://macwk.com", "desc": "macAPP分享" },
         { "name": "423Down", "url": "https://www.423down.com", "desc": "Windows软件资源" },
         { "name": "Gamer520", "url": "https://www.gamer520.com", "desc": "Windows，switch等学习软件" },
@@ -155,6 +158,7 @@
     {
       "category": "其他工具",
       "items": [
+        { "name": "emby软件", "url": "https://github.com/ddgksf2013/EmbyToolbox", "desc": "" },
         { "name": "超分辨率", "url": "https://cappuccino.moe/", "desc": "马赛克清晰术" },
         { "name": "文件快递柜", "url": "https://share.lanol.cn/", "desc": "无需登录文件分享" },
         { "name": "中转站", "url": "https://paste.c-net.org/", "desc": "使用链接可重置180天期限" },
