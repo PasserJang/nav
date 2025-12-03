@@ -118,7 +118,8 @@
         { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
-        { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "" }
+        { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
+        { "name": "观影", "url": "https://www.gying.page", "desc": "影视资源下载or云盘" }
       ]
     },
     {
