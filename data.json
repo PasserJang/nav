@@ -24,6 +24,7 @@
     {
       "category": "网络工具",
       "items": [
+        { "name": "nextDNS", "url": "https://my.nextdns.io", "desc": "DNS服务商" },
         { "name": "网络面板", "url": "https://net.netart.cn", "desc": "持续流量测速" },
         { "name": "证书", "url": "https://crt.sh/", "desc": "证书信息查询" },
         { "name": "DNS", "url": "https://dns.surf", "desc": "DNS查询-全球地图可视化" },
@@ -119,7 +120,8 @@
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
-        { "name": "观影", "url": "https://www.gying.page", "desc": "影视资源下载or云盘" }
+        { "name": "FMHY", "url": "https://fmhy.net", "desc": "全球各种free资源" },
+        { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" }
       ]
     },
     {
