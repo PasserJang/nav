@@ -38,6 +38,7 @@
         { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
         { "name": "speed test", "url": "https://speed.cloudflare.com", "desc": "cloudflare测速网站" },
         { "name": "TCP调参", "url": "https://omnitt.com", "desc": "计算sysctl.conf" },
+        { "name": "mihomo配置", "url": "https://github.com/HenryChiao/mihomo_yamls", "desc": "" },
         { "name": "sing-box配置", "url": "https://github.com/xishang0128/sub-store-template", "desc": "" }
       ]
     },
@@ -155,6 +156,7 @@
         { "name": "Gamer520", "url": "https://sway.cloud.microsoft/ZyHdQKVF0lCLyEuA", "desc": "防失联地址" },
         { "name": "不忘初心系统", "url": "https://www.123pan.com/s/7geA-fW3Hd", "desc": "" },
         { "name": "123云盘解锁", "url": "https://github.com/QingJ01/123pan_unlock", "desc": "" },
+        { "name": "Android软件推荐合集", "url": "https://github.com/xlucn/oh-my-foss-android", "desc": "" },
         { "name": "sysin", "url": "https://sysin.cn/", "desc": "Mac OS系统相关，如下载重装等..." }
       ]
     },
