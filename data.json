@@ -85,7 +85,7 @@
         { "name": "狐狸老师", "url": "https://gitee.com/callmer", "desc": "pve、ros等工具使用教程" },
         { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
         { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
-        { "name": "我不是盐神", "url": "https://onehu.xyz", "desc": "" },
+        { "name": "Simon", "url": "https://simonwillison.net/2025/Dec/10/html-tools", "desc": "大模型构建HTML技巧-外" },
         { "name": "geek", "url": "https://www.igeekbb.com", "desc": "含有hy2端口跳跃实践文章" }
       ]
     },
@@ -120,6 +120,7 @@
         { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
+        { "name": "polymarket", "url": "http://polymarket.com", "desc": "预测市场" },
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
         { "name": "FMHY", "url": "https://fmhy.net", "desc": "全球各种free资源" },
         { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" }
@@ -188,6 +189,7 @@
       "category": "Code",
       "items": [
         { "name": "codepen", "url": "https://codepen.io/pen", "desc": "前端代码运行展示" },
+        { "name": "shift", "url": "https://shift.js.org", "desc": "在线运行python、js、lua、bash、C等等" },
         { "name": "json4u", "url": "https://json4u.cn/editor", "desc": "Json可视化工具" },
         { "name": "canvas-confetti", "url": "https://www.kirilv.com/canvas-confetti/", "desc": "在网页上抛洒五彩纸屑的 JS 库" },
         { "name": "X File Storage", "url": "https://x-file-storage.xuyanwu.cn/", "desc": "一个 Java 软件包，用于文件上传" },
