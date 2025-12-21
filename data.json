@@ -38,6 +38,7 @@
         { "name": "联通测速", "url": "http://cesu.cqwin.com", "desc": "重庆联通测速网站" },
         { "name": "speed test", "url": "https://speed.cloudflare.com", "desc": "cloudflare测速网站" },
         { "name": "TCP调参", "url": "https://omnitt.com", "desc": "计算sysctl.conf" },
+        { "name": "阿里云DNS", "url": "https://dnsnext.console.aliyun.com/authoritative/domains", "desc": "控制台" },
         { "name": "mihomo配置", "url": "https://github.com/HenryChiao/mihomo_yamls", "desc": "" },
         { "name": "sing-box配置", "url": "https://github.com/xishang0128/sub-store-template", "desc": "" }
       ]
