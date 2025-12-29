@@ -123,7 +123,7 @@
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
         { "name": "polymarket", "url": "http://polymarket.com", "desc": "预测市场" },
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
-        { "name": "FMHY", "url": "https://fmhy.net", "desc": "全球各种free资源" },
+        { "name": "xget加速", "url": "https://xuc.xi-xu.me", "desc": "可以给github加速" },
         { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" }
       ]
     },
@@ -143,6 +143,7 @@
       "items": [
         { "name": "z-library", "url": "https://z-library.sk", "desc": "书籍是人类进步的阶梯" },
         { "name": "hifiti", "url": "https://www.hifiti.com", "desc": "音乐分享" },
+        { "name": "FMHY", "url": "https://fmhy.net", "desc": "全球各种free资源聚合" },
         { "name": "MacWK", "url": "https://macwk.com", "desc": "macAPP分享" },
         { "name": "423Down", "url": "https://www.423down.com", "desc": "Windows软件资源" },
         { "name": "Gamer520", "url": "https://www.gamer520.com", "desc": "Windows，switch等学习软件" },
