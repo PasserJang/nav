@@ -47,7 +47,7 @@
       "category": "内网",
       "items": [
         { "name": "immortalWrt", "url": "http://10.10.10.1", "desc": "" },
-        { "name": "zashBoard", "url": "http://10.10.10.4:20580", "desc": "" },
+        { "name": "zashBoard", "url": "http://10.10.10.4:9091/ui/zashboard/#/proxies", "desc": "" },
         { "name": "openSpeedtest", "url": "http://10.10.10.4:8080", "desc": "" },
         { "name": "fnOS", "url": "http://10.10.10.4", "desc": "" },
         { "name": "PVE", "url": "http://10.10.10.254:8006", "desc": "" }
