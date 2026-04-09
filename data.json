@@ -122,6 +122,7 @@
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
         { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
         { "name": "polymarket", "url": "http://polymarket.com", "desc": "预测市场" },
+        { "name": "雪球", "url": "https://xueqiu.com", "desc": "情绪市场" },
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
         { "name": "xget加速", "url": "https://xuc.xi-xu.me", "desc": "可以给github加速" },
         { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" }
