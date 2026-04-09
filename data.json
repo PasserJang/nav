@@ -120,12 +120,14 @@
         { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
         { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
         { "name": "Youtube", "url": "http://www.youtube.com", "desc": "" },
-        { "name": "qq邮箱", "url": "https://mail.qq.com", "desc": "" },
+        { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" },
         { "name": "polymarket", "url": "http://polymarket.com", "desc": "预测市场" },
         { "name": "雪球", "url": "https://xueqiu.com", "desc": "情绪市场" },
+        { "name": "同花顺", "url": "https://www.10jqka.com.cn", "desc": "市场" },
+        { "name": "财联社", "url": "https://www.cls.cn/telegraph", "desc": "电报" },
+        { "name": "投资导航", "url": "http://value500.com", "desc": "" },
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
-        { "name": "xget加速", "url": "https://xuc.xi-xu.me", "desc": "可以给github加速" },
-        { "name": "观影", "url": "https://www.gying.page", "desc": "在线观看、下载or云盘" }
+        { "name": "xget加速", "url": "https://xuc.xi-xu.me", "desc": "可以给github加速" }
       ]
     },
     {
