@@ -87,7 +87,8 @@
         { "name": "ipen", "url": "https://www.ipen.ink/", "desc": "Top Hacker News作者" },
         { "name": "Tom", "url": "https://blog.847977.xyz", "desc": "RouterOS相关教程" },
         { "name": "Simon", "url": "https://simonwillison.net/2025/Dec/10/html-tools", "desc": "大模型构建HTML技巧-外" },
-        { "name": "geek", "url": "https://www.igeekbb.com", "desc": "含有hy2端口跳跃实践文章" }
+        { "name": "geek", "url": "https://www.igeekbb.com", "desc": "含有hy2端口跳跃实践文章" },
+        { "name": "Meow VPS", "url": "https://meowvps.com", "desc": "vps评测blog" }
       ]
     },
     {
