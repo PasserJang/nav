@@ -6,6 +6,7 @@
         { "name": "gemini", "url": "https://gemini.google.com", "desc": "" },
         { "name": "chatGPT", "url": "https://chatgpt.com", "desc": "" },
         { "name": "千问", "url": "https://www.tongyi.com", "desc": "" },
+        { "name": "deepseek", "url": "https://chat.deepseek.com", "desc": "" },
         { "name": "豆包", "url": "https://www.doubao.com", "desc": "" }
       ]
     },
