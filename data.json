@@ -10,7 +10,7 @@
         { "name": "豆包", "url": "https://www.doubao.com", "desc": "" },
         { "name": "vscodeDev", "url": "https://vscode.dev/?vscode-lang=zh-cn", "desc": "" },
         { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
-        { "name": "GitHub", "url": "https://github.com", "desc": "" },
+        { "name": "DeepL翻译", "url": "https://www.deepl.com/zh/translator", "desc": "" },
         { "name": "微信网页传输", "url": "https://szfilehelper.weixin.qq.com", "desc": "" },
         { "name": "文本对比", "url": "https://www.huatools.com/text-diff/", "desc": "" }
       ]
