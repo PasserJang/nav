@@ -4,13 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="./favicon.ico" sizes="16x16" type="image/x-icon">
-    <link rel="icon" href="./favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="icon" href="./favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" sizes="180x180">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>个人导航 | My Nav</title>
-    <meta name="description" content="个人私有导航页">
-    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,6 +21,7 @@
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -38,431 +34,257 @@
         }
     </script>
     <style>
-        /* 基础设置 */
-        body {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        /* 隐藏滚动条但保留功能 */
-        ::-webkit-scrollbar {
-            width: 0px;
-            height: 0px;
-        }
-
-        /* 横向滚动容器优化 */
+        body { -webkit-tap-highlight-color: transparent; }
+        ::-webkit-scrollbar { width: 0; height: 0; }
         .scroll-container {
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
             mask-image: linear-gradient(to right, transparent, black 12px, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12px, black calc(100% - 12px), transparent 100%);
         }
+        /* 图片加载前的平滑过渡 */
+        .favicon-img { opacity: 0; transition: opacity 0.4s ease-in-out; }
+        .favicon-img.loaded { opacity: 1; }
     </style>
 </head>
 
-<body
-    class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-200 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- 顶部 Header & 搜索 -->
-    <header
-        class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all duration-300">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3">
-            <!-- Logo -->
-            <div class="font-bold text-lg tracking-tight text-blue-600 dark:text-blue-500 shrink-0 cursor-pointer select-none active:opacity-70 transition-opacity"
-                onclick="resetView()">
+            <div class="font-bold text-lg tracking-tight text-blue-600 dark:text-blue-500 shrink-0 cursor-pointer active:opacity-70 transition-opacity" onclick="resetView()">
                 PasserJ's Nav
             </div>
 
-            <!-- 搜索框 -->
             <div class="flex-1 max-w-lg">
                 <div class="relative group">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors"
-                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd" />
+                        <svg class="h-4 w-4 text-gray-400 group-focus-within:text-blue-500 transition-colors" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <input type="text" id="searchInput"
-                        class="block w-full pl-9 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-xl leading-5 bg-gray-100/50 dark:bg-gray-800/50 placeholder-gray-500 focus:outline-none focus:bg-white dark:focus:bg-black focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500/50 transition-all duration-200 text-sm"
-                        placeholder="搜索...">
+                    <input type="text" id="searchInput" 
+                        class="block w-full pl-9 pr-3 py-2 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-100/50 dark:bg-gray-800/50 placeholder-gray-500 focus:outline-none focus:bg-white dark:focus:bg-black focus:ring-2 focus:ring-blue-500/30 transition-all text-sm"
+                        placeholder="搜索... (按下 / 聚焦, Esc 取消)">
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 主要内容区域 -->
     <main class="flex-grow max-w-7xl mx-auto w-full px-0 sm:px-6 lg:px-8 py-4 min-h-[50vh]" id="mainContainer">
-
-        <!-- 默认展示区域 -->
         <div id="projectsContainer" class="space-y-8 pb-10">
-            <div class="flex justify-center items-center h-40 text-gray-400 gap-2">
-                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
-                        fill="none"></circle>
-                    <path class="opacity-75" fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                    </path>
-                </svg>
-                <span class="text-sm">Loading...</span>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 sm:px-0">
+                <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse-slow"></div>
+                <div class="h-20 bg-gray-200 dark:bg-gray-800 rounded-2xl animate-pulse-slow"></div>
             </div>
         </div>
-
-        <!-- 搜索结果区域 -->
         <div id="searchResultsContainer" class="hidden px-4 sm:px-0 space-y-8 pb-10"></div>
     </main>
 
-    <!-- 逻辑脚本 -->
     <script>
         let fullData = null;
         let projectKeys = [];
         let activeCategories = {};
 
-        // === 图标处理逻辑开始 ===
+        // === 1. 核心工具函数 ===
+        const debounce = (fn, delay) => {
+            let timer = null;
+            return (...args) => {
+                clearTimeout(timer);
+                timer = setTimeout(() => fn(...args), delay);
+            };
+        };
 
-        // 当图片加载完成（无论成功与否）
+        const getIconUrl = (domain) => `https://favicon.yandex.net/favicon/${domain}?size=32`;
+
+        // === 2. 图片处理逻辑 (解决闪烁) ===
         window.handleImageLoad = function (img) {
-            // Yandex API 特性：如果未找到图标，常返回 1x1 的透明像素
-            // 如果检测到是 1x1，我们视为加载失败，尝试备选方案
             if (img.naturalWidth === 1 && img.naturalHeight === 1) {
                 handleImageError(img);
             } else {
-                // 加载成功且尺寸正常，确保显示
-                img.style.opacity = '1';
+                img.classList.add('loaded'); // 加载成功后再显示，配合 CSS 过渡
             }
         };
 
-        // 当图片加载出错（或被视为出错）
         window.handleImageError = function (img) {
-            // 防止死循环
             if (img.dataset.state === 'failed') return;
-
-            // 如果还没试过直连 /favicon.ico
             if (!img.dataset.triedDirect) {
                 img.dataset.triedDirect = 'true';
                 try {
                     const url = new URL(img.dataset.url);
-                    // 尝试加载网站根目录的 favicon.ico
                     img.src = `${url.origin}/favicon.ico`;
-                } catch (e) {
-                    fail(img);
-                }
-            } else {
-                // 两次都失败了
-                fail(img);
-            }
+                } catch (e) { fail(img); }
+            } else { fail(img); }
         };
 
-        // 最终失败处理：隐藏图片，露出底下的彩色首字母层
         function fail(img) {
             img.dataset.state = 'failed';
-            img.style.opacity = '0'; // 关键：隐藏 img，显示底层的 div
+            img.style.display = 'none'; // 彻底隐藏，露出底下的首字母
         }
 
-        // === 图标处理逻辑结束 ===
-
+        // === 3. 初始化与数据处理 ===
         async function init() {
             const CACHE_KEY = 'nav_data_cache';
             const container = document.getElementById('projectsContainer');
-            let isRenderedFromCache = false;
-
-            // 1. 尝试从 LocalStorage 读取缓存 (立即渲染)
             const cachedString = localStorage.getItem(CACHE_KEY);
 
             if (cachedString) {
                 try {
-                    const cachedData = JSON.parse(cachedString);
-                    // 简单校验数据格式是否合法
-                    if (cachedData && typeof cachedData === 'object') {
-                        console.log('🚀 加载本地缓存');
-                        fullData = cachedData;
-                        processAndRender();
-                        isRenderedFromCache = true;
-                    }
-                } catch (e) {
-                    console.warn('缓存解析失败，已清理', e);
-                    localStorage.removeItem(CACHE_KEY);
-                }
+                    fullData = JSON.parse(cachedString);
+                    processAndRender();
+                } catch (e) { localStorage.removeItem(CACHE_KEY); }
             }
 
-            // 2. 发起网络请求 (静默更新)
             try {
                 const response = await fetch('data.json');
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
                 const newData = await response.json();
-
-                // 3. 对比数据是否变化 (简单的字符串比对)
                 if (JSON.stringify(newData) !== cachedString) {
-                    console.log('🔄 检测到数据更新，重新渲染');
                     fullData = newData;
-
-                    // 更新缓存
                     localStorage.setItem(CACHE_KEY, JSON.stringify(newData));
-
-                    // 重新渲染
                     processAndRender();
-
-                    // 可选：如果用户已经看了很久，突然刷新可能会造成困扰
-                    // 在这里可以加个 Toast 提示 "数据已更新"，但对于导航页，直接刷新是可以接受的
-                } else {
-                    console.log('✅ 数据即最新，无需更新');
                 }
             } catch (error) {
-                console.error('网络请求失败:', error);
-                // 如果没有缓存且网络失败，才显示错误页
-                if (!isRenderedFromCache) {
-                    container.innerHTML = `
-                <div class="text-center text-red-500 py-10 px-4 animate-fade-in">
-                    <p class="font-bold">加载失败</p>
-                    <p class="text-xs mt-2 text-gray-400">无法连接服务器且无本地缓存</p>
-                    <button onclick="location.reload()" class="mt-4 px-4 py-2 bg-gray-200 rounded text-sm">重试</button>
-                </div>
-            `;
+                if (!fullData) {
+                    container.innerHTML = `<div class="text-center text-red-500 py-10 animate-fade-in">加载失败，请检查网络</div>`;
                 }
             }
         }
 
-        // 辅助函数：处理数据并调用渲染
         function processAndRender() {
             projectKeys = Object.keys(fullData);
-
-            // 只有当 activeCategories 为空时才初始化（防止后台刷新重置用户选中的 Tab）
-            if (Object.keys(activeCategories).length === 0) {
-                projectKeys.forEach(key => activeCategories[key] = 0);
-            }
-
-            if (projectKeys.length > 0) {
-                renderAllProjects();
-            } else {
-                document.getElementById('projectsContainer').innerHTML = '<p class="text-center text-gray-500 mt-10">暂无数据</p>';
-            }
+            projectKeys.forEach(key => { if (!(key in activeCategories)) activeCategories[key] = 0; });
+            renderAllProjects();
         }
 
-        function renderAllProjects() {
-            const container = document.getElementById('projectsContainer');
-
-            container.innerHTML = projectKeys.map((key, idx) => {
-                const categories = fullData[key];
-                const gridsHTML = categories.map((cat, catIdx) => {
-                    const isVisible = catIdx === 0;
-                    const displayClass = isVisible ? 'grid animate-fade-in' : 'hidden';
-
-                    return `
-                        <div id="grid-${key}-${catIdx}" class="${displayClass} grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                            ${cat.items.map(item => createCard(item)).join('')}
-                        </div>
-                    `;
-                }).join('');
-
-                return `
-                <section id="section-${key}" class="animate-fade-in group">
-                    ${idx !== 0 ? '<div class="h-px bg-gray-100 dark:bg-gray-800/60 mx-4 sm:mx-0 mb-6"></div>' : ''}
-                    
-                    <div class="relative mb-4">
-                         <nav id="tabs-${key}" class="scroll-container flex space-x-2 overflow-x-auto px-4 sm:px-1 pb-2 pt-1">
-                            ${renderTabButtons(key)}
-                         </nav>
-                    </div>
-
-                    <div class="min-h-[100px] px-4 sm:px-0">
-                        ${gridsHTML}
-                    </div>
-                </section>
-                `;
-            }).join('');
-        }
-
-        function renderTabButtons(projectKey) {
-            const categories = fullData[projectKey] || [];
-            const activeIndex = activeCategories[projectKey];
-
-            if (categories.length === 0) return '<span class="text-xs text-gray-400">无分类</span>';
-
-            return categories.map((cat, index) => {
-                const isActive = index === activeIndex;
-                return `
-                    <button 
-                        data-idx="${index}"
-                        onclick="switchCategory('${projectKey}', ${index}, this)"
-                        class="tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${isActive
-                        ? 'bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold'
-                        : 'bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200'
-                    }"
-                    >
-                        ${cat.category}
-                    </button>
-                `;
-            }).join('');
-        }
-
-        window.switchCategory = function (projectKey, index, btnElement) {
-            const oldIndex = activeCategories[projectKey];
-            if (oldIndex === index) return;
-
-            activeCategories[projectKey] = index;
-
-            const oldGrid = document.getElementById(`grid-${projectKey}-${oldIndex}`);
-            const newGrid = document.getElementById(`grid-${projectKey}-${index}`);
-
-            if (oldGrid) {
-                oldGrid.classList.add('hidden');
-                oldGrid.classList.remove('grid', 'animate-fade-in');
-            }
-            if (newGrid) {
-                newGrid.classList.remove('hidden');
-                newGrid.classList.add('grid', 'animate-fade-in');
-            }
-
-            const container = document.getElementById(`tabs-${projectKey}`);
-            const buttons = container.getElementsByTagName('button');
-
-            for (let btn of buttons) {
-                btn.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-white text-gray-600 border border-gray-100 hover:bg-gray-50 hover:border-gray-200 dark:bg-gray-800/50 dark:text-gray-400 dark:border-gray-700/50 dark:hover:bg-gray-800 dark:hover:text-gray-200';
-            }
-
-            if (btnElement) {
-                btnElement.className = 'tab-btn shrink-0 whitespace-nowrap px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ease-out select-none outline-none focus-visible:ring-2 focus-visible:ring-blue-500 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md transform scale-100 font-bold';
-                btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-            }
-        }
-
+        // === 4. 渲染逻辑 ===
         function createCard(item) {
-            // 初始尝试使用 Yandex
-            const primaryIcon = `https://favicon.yandex.net/favicon/${extractHostname(item.url)}?size=32`;
-
-            const safeName = item.name ? item.name.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
-            const safeDesc = item.desc ? item.desc.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
-            const firstChar = safeName.charAt(0).toUpperCase();
+            const domain = extractHostname(item.url);
+            const primaryIcon = getIconUrl(domain);
+            const safeName = item.name?.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])) || '';
+            const safeDesc = item.desc?.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])) || '';
             const bgColor = getColorFromName(safeName);
 
-            // 结构：
-            // 底层：div (纯色背景 + 文字) -> 永远存在
-            // 上层：img (带白色背景) -> 加载成功遮住底层，失败透明露出底层
             return `
             <a href="${item.url}" target="_blank" rel="noopener noreferrer" 
-               class="group relative flex items-center p-3 sm:p-4 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700/50 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-300 h-full overflow-hidden">
+               class="group relative flex items-center p-3 sm:p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800/60 shadow-sm hover:shadow-xl hover:-translate-y-0.5 hover:border-blue-500/40 dark:hover:border-blue-500/40 transition-all duration-300 h-full overflow-hidden dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]">
                 
-                <div class="flex-shrink-0 mr-3 w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden shadow-inner relative bg-gray-50 dark:bg-gray-700/50">
-                    <!-- 底层 Fallback (相当于你代码中的 SVG 逻辑) -->
-                    <div class="absolute inset-0 flex items-center justify-center text-white/90 text-sm sm:text-base font-bold shadow-inner z-0 select-none" 
-                         style="background-color: ${bgColor};">
-                        ${firstChar}
+                <div class="flex-shrink-0 mr-3 w-10 h-10 rounded-full overflow-hidden relative bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                    <div class="absolute inset-0 flex items-center justify-center text-white text-xs font-bold select-none z-0" style="background-color: ${bgColor};">
+                        ${safeName.charAt(0).toUpperCase()}
                     </div>
-                    
-                    <!-- 上层 Image -->
-                    <img 
-                        src="${primaryIcon}" 
-                        data-url="${item.url}"
-                        alt="${safeName}" 
-                        class="relative z-10 w-full h-full object-contain p-1.5 transition-opacity duration-300 bg-white dark:bg-gray-800"
-                        loading="lazy"
-                        onload="handleImageLoad(this)"
-                        onerror="handleImageError(this)"
-                    />
+                    <img src="${primaryIcon}" data-url="${item.url}" alt="${safeName}" 
+                         class="favicon-img relative z-10 w-full h-full object-contain p-1.5 bg-white dark:bg-gray-800"
+                         onload="handleImageLoad(this)" onerror="handleImageError(this)" loading="lazy" />
                 </div>
 
-                <div class="flex-1 min-w-0 flex flex-col justify-center">
+                <div class="flex-1 min-w-0">
                     <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate transition-colors">
                         ${safeName}
                     </h3>
-                    <p class="text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 truncate mt-0.5 font-medium">
-                        ${safeDesc || extractDomain(item.url)}
+                    <p class="text-[10px] sm:text-xs text-gray-400 dark:text-gray-500 truncate mt-0.5">
+                        ${safeDesc || domain}
                     </p>
                 </div>
             </a>`;
         }
 
-        window.resetView = function () {
-            const input = document.getElementById('searchInput');
-            input.value = '';
-            input.blur();
-            toggleSearchMode(false);
+        function renderAllProjects() {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = projectKeys.map((key, idx) => {
+                const categories = fullData[key];
+                const gridsHTML = categories.map((cat, catIdx) => `
+                    <div id="grid-${key}-${catIdx}" class="${catIdx === activeCategories[key] ? 'grid animate-fade-in' : 'hidden'} grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
+                        ${cat.items.map(item => createCard(item)).join('')}
+                    </div>
+                `).join('');
+
+                return `
+                <section class="animate-fade-in">
+                    ${idx !== 0 ? '<div class="h-px bg-gray-100 dark:bg-gray-800/60 mx-4 sm:mx-0 mb-6"></div>' : ''}
+                    <div class="relative mb-4 px-4 sm:px-1">
+                         <nav id="tabs-${key}" class="scroll-container flex space-x-2 overflow-x-auto pb-2">
+                            ${categories.map((cat, i) => `
+                                <button onclick="switchCategory('${key}', ${i}, this)" 
+                                    class="shrink-0 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${i === activeCategories[key] 
+                                        ? 'bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md font-bold' 
+                                        : 'bg-white text-gray-600 border border-gray-100 dark:bg-gray-800/40 dark:text-gray-400 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800'}">
+                                    ${cat.category}
+                                </button>`).join('')}
+                         </nav>
+                    </div>
+                    <div class="px-4 sm:px-0">${gridsHTML}</div>
+                </section>`;
+            }).join('');
         }
 
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const val = e.target.value.trim();
-            if (val.length > 0) {
-                toggleSearchMode(true);
-                renderSearchResults(val);
-            } else {
-                toggleSearchMode(false);
-            }
-        });
+        // === 5. 交互与搜索 ===
+        window.switchCategory = function (key, index, btn) {
+            if (activeCategories[key] === index) return;
+            const oldIdx = activeCategories[key];
+            activeCategories[key] = index;
+            
+            document.getElementById(`grid-${key}-${oldIdx}`).classList.replace('grid', 'hidden');
+            document.getElementById(`grid-${key}-${index}`).classList.replace('hidden', 'grid');
+            
+            const btns = btn.parentElement.children;
+            for (let b of btns) b.className = b.className.replace(/bg-gray-800|dark:bg-gray-100|text-white|dark:text-gray-900|font-bold/g, '').trim() + ' bg-white text-gray-600 dark:bg-gray-800/40 dark:text-gray-400';
+            btn.className = 'shrink-0 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 bg-gray-800 text-white dark:bg-gray-100 dark:text-gray-900 shadow-md';
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        };
 
+        const performSearch = debounce((val) => {
+            const resultsDiv = document.getElementById('searchResultsContainer');
+            if (!val) { toggleSearchMode(false); return; }
+            
+            toggleSearchMode(true);
+            let matched = [];
+            projectKeys.forEach(p => fullData[p].forEach(c => {
+                const items = c.items.filter(i => (i.name + i.desc + i.url).toLowerCase().includes(val.toLowerCase()));
+                if (items.length) matched.push({ title: c.category, items });
+            }));
+
+            resultsDiv.innerHTML = matched.length ? matched.map(g => `
+                <div class="animate-fade-in">
+                    <h3 class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-wider pl-1">${g.title}</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">${g.items.map(i => createCard(i)).join('')}</div>
+                </div>`).join('') : `<div class="text-center py-20 opacity-50">未找到 "${val}"，按 Enter 搜索 Google</div>`;
+        }, 250);
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => performSearch(e.target.value.trim()));
+
+        window.resetView = () => {
+            searchInput.value = '';
+            toggleSearchMode(false);
+            searchInput.blur();
+        };
+
+        function toggleSearchMode(isSearch) {
+            document.getElementById('projectsContainer').classList.toggle('hidden', isSearch);
+            document.getElementById('searchResultsContainer').classList.toggle('hidden', !isSearch);
+        }
+
+        // 键盘快捷键
         document.addEventListener('keydown', (e) => {
             if (e.key === '/' && document.activeElement !== searchInput) {
                 e.preventDefault();
                 searchInput.focus();
             }
-            if (e.key === 'Enter') {
-                const val = searchInput.value.trim();
-                if (val) window.open(`https://www.google.com/search?q=${encodeURIComponent(val)}`, '_blank');
+            if (e.key === 'Escape') resetView();
+            if (e.key === 'Enter' && searchInput.value) {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(searchInput.value)}`, '_blank');
             }
         });
 
-        function toggleSearchMode(isSearch) {
-            const projectsDiv = document.getElementById('projectsContainer');
-            const resultsDiv = document.getElementById('searchResultsContainer');
-            if (isSearch) {
-                projectsDiv.classList.add('hidden');
-                resultsDiv.classList.remove('hidden');
-            } else {
-                projectsDiv.classList.remove('hidden');
-                resultsDiv.classList.add('hidden');
-            }
-        }
-
-        function renderSearchResults(filterText) {
-            const resultsDiv = document.getElementById('searchResultsContainer');
-            let matchedGroups = [];
-            projectKeys.forEach(pKey => {
-                fullData[pKey].forEach(cat => {
-                    const matches = cat.items.filter(item =>
-                        (item.name + item.desc + item.url).toLowerCase().includes(filterText.toLowerCase())
-                    );
-                    if (matches.length > 0) {
-                        matchedGroups.push({ title: cat.category, items: matches });
-                    }
-                });
-            });
-
-            if (matchedGroups.length === 0) {
-                resultsDiv.innerHTML = `
-                    <div class="text-center py-20 animate-fade-in">
-                        <div class="text-4xl mb-4 grayscale opacity-50">🔍</div>
-                        <h3 class="text-base font-medium text-gray-600 dark:text-gray-400">未找到 "${filterText}"</h3>
-                        <p class="text-gray-400 text-xs mt-2">按 Enter 尝试 Google 搜索</p>
-                    </div>`;
-                return;
-            }
-
-            resultsDiv.innerHTML = matchedGroups.map(group => `
-                <div class="animate-fade-in">
-                    <h3 class="text-xs font-bold text-gray-400 dark:text-gray-500 mb-3 uppercase tracking-wider pl-1">
-                        ${group.title}
-                    </h3>
-                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-                        ${group.items.map(item => createCard(item)).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function extractHostname(urlStr) { try { return new URL(urlStr).hostname; } catch (e) { return ''; } }
-        function extractDomain(urlStr) { try { return new URL(urlStr).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
-        function getColorFromName(name) {
-            // 使用与你代码示例类似的鲜艳色系
-            const colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#f1c40f", "#e67e22", "#e74c3c", "#f39c12", "#d35400"];
+        function extractHostname(u) { try { return new URL(u).hostname; } catch { return ''; } }
+        function getColorFromName(n) {
+            const colors = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#e67e22", "#e74c3c"];
             let hash = 0;
-            for (let i = 0; i < name.length; i++) hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            for (let i = 0; i < n.length; i++) hash = n.charCodeAt(i) + ((hash << 5) - hash);
             return colors[Math.abs(hash) % colors.length];
         }
 
         init();
     </script>
 </body>
-
 </html>
