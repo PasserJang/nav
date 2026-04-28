@@ -188,7 +188,8 @@
     {
       "category": "其他网站",
       "items": [
-        { "name": "Apple参数", "url": "https://hubweb.cn/", "desc": "Apple 苹果产品参数中心" },
+        { "name": "谷歌地球", "url": "https://earth.google.com", "desc": "" },
+        { "name": "Apple参数", "url": "https://hubweb.cn", "desc": "Apple 苹果产品参数中心" },
         { "name": "wallhaven", "url": "https://wallhaven.cc", "desc": "壁纸下载" },
         { "name": "电鸭社区", "url": "https://eleduck.com", "desc": "专注远程工作招聘交流平台" },
         { "name": "轻松游牧", "url": "https://easynomad.cn", "desc": "远程工作集合" },
