@@ -69,6 +69,7 @@
         { "name": "Gamer520", "url": "https://laoquzhang.com/", "desc": "Windows，switch游戏资源" },
         { "name": "z-library", "url": "https://z-library.sk", "desc": "书籍是人类进步的阶梯" },
         { "name": "423Down", "url": "https://www.423down.com", "desc": "Windows软件资源" },
+        { "name": "Notepad3", "url": "https://github.com/rizonesoft/Notepad3", "desc": "替代Windows记事本" },
         { "name": "emby软件", "url": "https://github.com/ddgksf2013/EmbyToolbox", "desc": "" },
         { "name": "Wo Mic", "url": "https://wolicheng.com/womic/download.html", "desc": "麦克风串流软件（电脑用手机麦克）" },
         { "name": "hifiti", "url": "https://www.hifiti.com", "desc": "音乐分享" },
@@ -218,6 +219,7 @@
         { "name": "小不点", "url": "https://xiaoso.net", "desc": "人性化的排版分类" },
         { "name": "不死鸟", "url": "https://iui.su/", "desc": "推荐网站的网站" },
         { "name": "FMHY", "url": "https://fmhy.net", "desc": "全球各种破解资源聚合" },
+        { "name": "轻工具", "url": "https://qinggongju.com", "desc": "网页布局值得学习" },
         { "name": "投资导航", "url": "http://value500.com", "desc": "" }
       ]
     }
