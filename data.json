@@ -56,7 +56,8 @@
         { "name": "Screen Recorder", "url": "https://screenrecord.43z.one", "desc": "在线录制浏览器" },
         { "name": "毒蘑菇GPU测试", "url": "https://volumeshader.org/zh", "desc": "网络、屏幕、声音、摄像头、鼠标和键盘等测试" },
         { "name": "codepen", "url": "https://codepen.io/pen", "desc": "前端代码运行展示" },
-        { "name": "shift", "url": "https://shift.js.org", "desc": "在线运行python、js、lua、bash、C等等" }
+        { "name": "shift", "url": "https://shift.js.org", "desc": "在线运行python、js、lua、bash、C等等" },
+        { "name": "冷熊简历", "url": "https://cv.ftqq.com", "desc": "" }
       ]
     },
     {
