@@ -7,7 +7,7 @@
         { "name": "chatGPT", "url": "https://chatgpt.com", "desc": "" },
         { "name": "千问", "url": "https://www.tongyi.com", "desc": "" },
         { "name": "deepseek", "url": "https://chat.deepseek.com", "desc": "" },
-        { "name": "豆包", "url": "https://www.doubao.com", "desc": "" },
+        { "name": "kimi", "url": "https://www.kimi.com", "desc": "" },
         { "name": "vscodeDev", "url": "https://vscode.dev/?vscode-lang=zh-cn", "desc": "" },
         { "name": "语雀", "url": "https://www.yuque.com", "desc": "" },
         { "name": "DeepL翻译", "url": "https://www.deepl.com/zh/translator", "desc": "" },
