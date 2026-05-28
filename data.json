@@ -180,7 +180,7 @@
         { "name": "YouTube", "url": "https://www.youtube.com", "desc": "" },
         { "name": "小红书", "url": "https://www.xiaohongshu.com", "desc": "" },
         { "name": "闲鱼", "url": "https://www.goofish.com", "desc": "" },
-        { "name": "QQ邮箱", "url": "https://mail.qq.com", "desc": "" },
+        { "name": "力扣", "url": "https://leetcode.cn", "desc": "" },
         { "name": "财联社", "url": "https://www.cls.cn/telegraph", "desc": "电报" },
         { "name": "雪球", "url": "https://xueqiu.com/stock/screener", "desc": "选股" },
         { "name": "polymarket", "url": "http://polymarket.com", "desc": "预测" },
