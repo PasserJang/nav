@@ -63,7 +63,6 @@
     {
       "category": "资源下载",
       "items": [
-        { "name": "观影", "url": "https://www.挂了.com/", "desc": "影视资源-在线/网盘/磁力" },
         { "name": "SeedHub", "url": "https://workflowy.com/s/ff4ac3a19545/tEvTraNzl9fk1fJA#/dd11baf6866b", "desc": "影视资源-网盘/磁力" },
         { "name": "NS头号玩家", "url": "https://nsthwj.com/", "desc": "switch游戏资源" },
         { "name": "Koyso", "url": "https://koyso.to", "desc": "Windows游戏学习软件" },
@@ -83,6 +82,7 @@
         { "name": "Android软件推荐合集", "url": "https://gitee.com/lewinat0r/oh-my-foss-android", "desc": "" },
         { "name": "miui国内国外线刷包", "url": "https://roms.miuier.com/zh-cn/", "desc": "" },
         { "name": "miui国内国外线刷包2", "url": "https://xiaomirom.com/", "desc": "" },
+        { "name": "openapk", "url": "https://www.openapk.net", "desc": "安卓开源软件" },
         { "name": "萤火虫资源", "url": "https://yhcres.top/", "desc": "安卓刷机，底部123盘" }
       ]
     },
@@ -176,8 +176,8 @@
       "category": "常用网站",
       "items": [
         { "name": "墨鱼主页", "url": "https://ddgksf2013.top", "desc": "quanx去广告" },
-        { "name": "Bilibili", "url": "http://www.bilibili.com", "desc": "" },
-        { "name": "YouTube", "url": "https://www.youtube.com", "desc": "" },
+        { "name": "观影", "url": "https://www.挂了.com/", "desc": "影视资源-在线/网盘/磁力" },
+        { "name": "飞幕", "url": "https://feimu.tv", "desc": "emby在线播放" },
         { "name": "小红书", "url": "https://www.xiaohongshu.com", "desc": "" },
         { "name": "闲鱼", "url": "https://www.goofish.com", "desc": "" },
         { "name": "力扣", "url": "https://leetcode.cn", "desc": "" },
@@ -191,6 +191,7 @@
       "category": "其他网站",
       "items": [
         { "name": "谷歌地球", "url": "https://earth.google.com", "desc": "" },
+        { "name": "青空次元", "url": "https://www.sorani.net", "desc": "动漫视频网站" },
         { "name": "Apple参数", "url": "https://hubweb.cn", "desc": "Apple 苹果产品参数中心" },
         { "name": "wallhaven", "url": "https://wallhaven.cc", "desc": "壁纸下载" },
         { "name": "电鸭社区", "url": "https://eleduck.com", "desc": "专注远程工作招聘交流平台" },
