@@ -735,6 +735,11 @@
               "name": "polymarket",
               "url": "http://polymarket.com",
               "desc": "预测"
+            },
+            {
+              "name": "Github",
+              "url": "https://github.com",
+              "desc": ""
             }
           ]
         },
