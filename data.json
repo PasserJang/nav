@@ -481,6 +481,11 @@
               "name": "百度贴吧",
               "url": "https://tieba.baidu.com/f?kw=%E9%87%8D%E5%BA%86%E8%81%94%E9%80%9A&ie=utf-8",
               "desc": "重庆联通吧"
+            },
+            {
+              "name": "品技",
+              "url": "https://www.tekqart.com/",
+              "desc": ""
             }
           ]
         },
