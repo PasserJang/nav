@@ -841,6 +841,11 @@
               "name": "appraven",
               "url": "https://appraven.net",
               "desc": "苹果软件限免，类酷安集合"
+            },
+            {
+              "name": "我的漫画",
+              "url": "https://mycomic.com/cn",
+              "desc": ""
             }
           ]
         },
